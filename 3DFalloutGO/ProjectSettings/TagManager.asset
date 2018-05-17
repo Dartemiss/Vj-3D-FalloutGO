@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Vertical
   - Floor
+  - floor_enemy
   layers:
   - Default
   - TransparentFX

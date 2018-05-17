@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 65594685499464266}
   m_Layer: 0
   m_Name: recta_pared_giro_der
-  m_TagString: Untagged
+  m_TagString: Vertical
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 23308862238012520}
   m_Layer: 0
   m_Name: recta_suelo_intersec_der
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
