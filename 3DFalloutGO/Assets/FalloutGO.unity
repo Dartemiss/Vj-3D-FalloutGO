@@ -210,6 +210,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 78436283}
+  - component: {fileID: 78436284}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -232,6 +233,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &78436284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 78436282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6703245884a56c945ac852d7a71877c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCharacter: {fileID: 350392364}
 --- !u!4 &79846724 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4930938055780416, guid: e4bb36d9747f6ac46b8f1dfce4b67d33,
@@ -1227,7 +1240,7 @@ GameObject:
   - component: {fileID: 556750169}
   m_Layer: 0
   m_Name: recta_suelo
-  m_TagString: Untagged
+  m_TagString: Vertical
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3284,6 +3297,10 @@ Prefab:
     - target: {fileID: 4285719156108474, guid: 5c37789ccae42f649b5a90e04140dee7, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981522530513534, guid: 5c37789ccae42f649b5a90e04140dee7, type: 2}
+      propertyPath: m_TagString
+      value: Vertical
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c37789ccae42f649b5a90e04140dee7, type: 2}
