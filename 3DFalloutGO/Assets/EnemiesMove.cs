@@ -24,7 +24,7 @@ public class EnemiesMove : MonoBehaviour {
 			if (Physics.Raycast (ray, out hit, 100)) {
 				//Debug.Log( hit.transform.gameObject.name );
 				newPos = hit.transform.position;
-				if (Vector3.Distance (mainCharacter.transform.position, newPos) < 5.0f) {
+				if ((Vector3.Distance (mainCharacter.transform.position, newPos)) < 5.0f && (2.0f <Vector3.Distance (mainCharacter.transform.position, newPos))) {
 					moving = true;
 				}
 			}

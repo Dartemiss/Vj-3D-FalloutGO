@@ -7,8 +7,10 @@ public class StaticEnemiesScript : MonoBehaviour {
 	public Transform mainCharacter;
 	Transform enemy;
 	GameObject floor;
+	public GameObject shot;
 	int numEnemies = 1;
 	bool dead = false;
+	public float speed = 8.0f;
 	Vector3[] floorLocations = new Vector3[1];
 	// Use this for initialization
 	void Start () {
@@ -17,10 +19,8 @@ public class StaticEnemiesScript : MonoBehaviour {
 			Vector3 auxiliarPos = new Vector3 (enemy.transform.position.x, enemy.transform.position.y + 2.0f, enemy.transform.position.z);
 			RaycastHit hit;
 			float distance = 100.0f;
-			Debug.Log ("hola");
 			if (Physics.Raycast (auxiliarPos, Vector3.down, out hit, distance)) {
 				floorLocations[i] = hit.transform.position;
-				Debug.Log (hit.transform.position);
 			}
 		}
 	}
@@ -40,8 +40,10 @@ public class StaticEnemiesScript : MonoBehaviour {
 		if (dotProd > 0.9 && !dead) {
 			//enemy.Rotate (0, 90, 0);
 			if(Vector3.Distance (mainCharacter.transform.position, enemy.position) <= 4.0f){
-				mainCharacter.transform.Rotate(-90.0f,0,0);
+				//mainCharacter.transform.Rotate(-90.0f,0,0);
 				dead = true;
+				GameObject obj = Instantiate (shot, enemy.transform.position + Vector3.forward, shot.transform.rotation);
+				obj.GetComponent<Rigidbody>().velocity = speed * Vector3.forward;
 			}
 		}
 	}

@@ -7,6 +7,8 @@ TagManager:
   - Vertical
   - Floor
   - floor_enemy
+  - shot
+  - broken_floor
   layers:
   - Default
   - TransparentFX

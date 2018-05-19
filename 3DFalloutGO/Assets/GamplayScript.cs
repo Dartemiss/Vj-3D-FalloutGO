@@ -14,6 +14,9 @@ public class GamplayScript : MonoBehaviour {
 	float aux = 0.0f;
 	int numEnemies = 2;
 	bool suelo = true;
+	bool updown = true;
+	bool jumpFloorToVertical = false;
+	bool zz,yy = false;
 	// Use this for initialization
 	void Start () {
 		
@@ -30,12 +33,21 @@ public class GamplayScript : MonoBehaviour {
 				//Debug.Log( hit.transform.gameObject.name );
 				newPos = hit.transform.position;
 				actualPos = mainCharacter.transform.position;
+				Debug.Log (hit.transform.gameObject.tag);
 				if (Vector3.Distance (mainCharacter.transform.position, newPos) < 5.0f) {
 					if (hit.transform.gameObject.tag == "Vertical") {
 						if (suelo) {
-							jumping = true;
+							if (mainCharacter.transform.position.y < newPos.y) {
+								jumping = true;
+								mainCharacter.LookAt (new Vector3 (newPos.x, mainCharacter.transform.position.y, newPos.z));
+							}
+							else {
+								jumpFloorToVertical = true;
+								zz = true;
+								mainCharacter.LookAt (new Vector3 (newPos.x, mainCharacter.transform.position.y, newPos.z));
+								mainCharacter.transform.Rotate (0, 180,0f, 0);
+							}
 							currently_moving = true;
-							mainCharacter.LookAt (new Vector3 (newPos.x, mainCharacter.transform.position.y, newPos.z));
 						} else {
 							escalar = true;
 							currently_moving = true;
@@ -43,7 +55,7 @@ public class GamplayScript : MonoBehaviour {
 						}
 						suelo = false;
 
-					} else {
+					} else if(hit.transform.gameObject.tag == "Floor" || hit.transform.gameObject.tag == "floor_enemy" || hit.transform.gameObject.tag == "broken_floor") {
 						if (suelo) {
 							moving = true;
 							currently_moving = true;
@@ -65,6 +77,8 @@ public class GamplayScript : MonoBehaviour {
 			moveEntitiesWall ();
 		} else if (jumpdown) {
 			jumpdownEntitiesWall ();
+		} else if (jumpFloorToVertical) {
+			floorToVertical ();
 		}
 	}
 
@@ -80,7 +94,7 @@ public class GamplayScript : MonoBehaviour {
 	void jumpEntitiesWall () {
 		mainCharacter.transform.Translate(new Vector3 (0,0.1f,0.1f));
 		aux = aux + 0.1f;
-		if (1.5f < aux) {
+		if (1.5f < aux && updown) {
 			jumping = false;
 			aux = 0.0f;
 			currently_moving = false;
@@ -120,6 +134,28 @@ public class GamplayScript : MonoBehaviour {
 			}
 		}
 	}
+
+	void floorToVertical(){
+		if (zz) {
+			mainCharacter.transform.Translate (0, 0, -0.1f);
+		} else if (yy) {
+			mainCharacter.transform.Translate (0,-0.1f,0);
+		}
+		if (zz && !yy) {
+			if (newPos.z + 1.0f < mainCharacter.transform.position.z) {
+				zz = false;
+				yy = true;
+			}
+		} else if (!zz && yy) {
+			if (mainCharacter.transform.position.y <= newPos.y) {
+				zz = false;
+				yy = false;
+			}
+		} else {
+			jumpFloorToVertical = false;
+		}
+	}
+
 
 	//Looks in which direction had clicked the player and assign a number for each direction
 	// Right = 0, Left = 1, Up = 2, Down = 3
