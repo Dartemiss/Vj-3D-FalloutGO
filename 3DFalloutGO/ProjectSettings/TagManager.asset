@@ -9,6 +9,10 @@ TagManager:
   - floor_enemy
   - shot
   - broken_floor
+  - peonza
+  - floor_ammo
+  - enemy
+  - my_shot
   layers:
   - Default
   - TransparentFX

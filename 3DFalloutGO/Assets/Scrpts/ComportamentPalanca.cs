@@ -6,8 +6,9 @@ public class ComportamentPalanca : MonoBehaviour {
 
 	public Transform mainCharacter;
 	public Transform platform;
+	public int typeButton = 0;
 	Vector3 newPos;
-	bool updown = true;
+	public bool updown = true;
 	bool active = false;
 	float aux = 0.0f;
 	// Use this for initialization
@@ -30,21 +31,40 @@ public class ComportamentPalanca : MonoBehaviour {
 				}
 			}
 		}
-		if (active)
-			movePlatform ();
+		if (active && typeButton == 0)
+			movePlatformY ();
+		else if (active && typeButton == 1)
+			movePlatformZ ();
+
 	}
 
-	void movePlatform(){
+	void movePlatformY(){
 		float altura;
 		if (updown)
 			altura = 0.1f;
 		else
 			altura = -0.1f;
 		platform.Translate (0, altura, 0);
-		transform.Translate (0, altura, 0);
-		mainCharacter.Translate (0,altura,0);
+		//transform.Translate (0, altura, 0);
+		//mainCharacter.Translate (0,altura,0);
 		aux = aux + 0.1f;
 		if (4.0f < aux) {
+			aux = 0.0f;
+			updown = !updown;
+			active = false;
+		}
+	}
+
+	void movePlatformZ(){
+		float dist;
+		if (updown)
+			dist = 0.1f;
+		else
+			dist = -0.1f;
+		platform.Translate (dist, 0, 0);
+		//transform.Translate();
+		aux = aux + 0.1f;
+		if(4.0f< aux){
 			aux = 0.0f;
 			updown = !updown;
 			active = false;

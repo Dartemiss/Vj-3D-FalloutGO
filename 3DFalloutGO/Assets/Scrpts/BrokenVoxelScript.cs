@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BrokenVoxelScript : MonoBehaviour {
 
 	public Transform mainCharacter;
 	bool lejos = true;
 	int numRotura = 0;
+	float aux = 0.0f;
 	// Use this for initialization
 	void Start () {
 		
@@ -24,6 +26,10 @@ public class BrokenVoxelScript : MonoBehaviour {
 	
 		if (numRotura == 2) {
 			mainCharacter.transform.Translate (0, -0.2f, 0);
+			aux = aux + 0.1f;
+			if (2.5f<aux) {
+				SceneManager.LoadScene(1);
+			}
 		}
 	}
 }

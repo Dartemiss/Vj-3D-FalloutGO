@@ -17,7 +17,6 @@ public class PlayerBeenShot : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision)
 	{
-		Debug.Log ("fgahsuijgha");
 		if (collision.gameObject.tag == "shot") {
 			Destroy (collision.gameObject);
 			SceneManager.LoadScene(1);

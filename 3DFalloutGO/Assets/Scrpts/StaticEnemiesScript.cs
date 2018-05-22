@@ -52,15 +52,14 @@ public class StaticEnemiesScript : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0)) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
-
 			if (Physics.Raycast (ray, out hit, 100)) {
 				Vector3 newPos = hit.transform.position;
 				if (Vector3.Distance (mainCharacter.transform.position, newPos) < 5.0f) {
 					for(int i = 0;numEnemies >i;++i){
 						if (floorLocations [i] == newPos) {
-							Debug.Log (floorLocations [i]);
 							enemy = gameObject.transform.GetChild (i);
 							enemy.transform.Rotate (90.0f, 0, 0);
+							Destroy (enemy.gameObject);
 						}
 					}
 				}
