@@ -24,9 +24,11 @@ public class GamplayScript : MonoBehaviour {
 	public Vector3 tp = new Vector3(28,0,4);
 	Vector3 offsetCam = new Vector3 (-1.0f,12.0f,-18.0f);
 
+	Animator m_Animator;
+
 	// Use this for initialization
 	void Start () {
-		
+		m_Animator = GetComponentInChildren<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -108,6 +110,7 @@ public class GamplayScript : MonoBehaviour {
 	}
 
 	void moveEntitiesField () {
+		m_Animator.Play("Walk");
 		transform.Translate(new Vector3 (0,0,0.1f));
 		if (Vector3.Distance(new Vector3(transform.position.x,0.0f,transform.position.z),new Vector3(newPos.x,0.0f,newPos.z)) < 0.1f) {
 			moving = false;
@@ -219,6 +222,18 @@ public class GamplayScript : MonoBehaviour {
 		}
 	}
 
+	    public IEnumerator shootingDelay(Vector3 dir)
+	    {
+		        yield return new WaitForSeconds(0.8f);
+
+		        AudioSource audioS = GetComponent<AudioSource>();
+		        audioS.Play();
+		        GameObject obj = Instantiate(shot, transform.position + dir, shot.transform.rotation);
+		        obj.GetComponent<Rigidbody>().velocity = 8.0f * dir;
+
+		    }
+
+
 	void realShotTime(){
 		transform.LookAt (new Vector3 (newPos.x, transform.position.y, newPos.z));
 		if (Mathf.Abs (newPos.y - transform.position.y) < 0.2) {
@@ -242,6 +257,8 @@ public class GamplayScript : MonoBehaviour {
 				obj.GetComponent<Rigidbody>().velocity = 8.0f * dir;
 				//--numBullets;
 			}
+			m_Animator.Play("Shoot");
+			StartCoroutine(shootingDelay(dir));
 		}
 			
 	}
