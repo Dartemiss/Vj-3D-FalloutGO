@@ -21,6 +21,8 @@ public class GamplayScript : MonoBehaviour {
 	bool up;
 	int numBullets = 0;
 	public Camera myCamera;
+	public Vector3 tp = new Vector3(28,0,4);
+	Vector3 offsetCam = new Vector3 (-1.0f,12.0f,-18.0f);
 
 	// Use this for initialization
 	void Start () {
@@ -29,7 +31,11 @@ public class GamplayScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//myCamera.transform.position = transform.position;
+		//myCamera.transform.position = transform.position + offsetCam;
+		if(Input.GetKeyDown("t")){
+			transform.position = new Vector3 (tp.x, tp.y + 0.51f, tp.z);
+		}
+
 		if (Input.GetMouseButtonDown (0) && !currently_moving) {
 			Ray ray = Camera.main.ScreenPointToRay( Input.mousePosition );
 			RaycastHit hit;
@@ -150,9 +156,9 @@ public class GamplayScript : MonoBehaviour {
 	void moveEntitiesWall () {
 		int direction = goUpDownRightLeft ();
 		if(direction == 0)
-			transform.Translate(new Vector3 (0.1f,0,0));
-		else if(direction == 1)
 			transform.Translate(new Vector3 (-0.1f,0,0));
+		else if(direction == 1)
+			transform.Translate(new Vector3 (0.1f,0,0));
 		else if(direction == 2)
 			transform.Translate(new Vector3 (0,0.1f,0));
 		else if(direction == 3)
@@ -223,18 +229,20 @@ public class GamplayScript : MonoBehaviour {
 					dir = Vector3.left;
 				else
 					dir = Vector3.right;
+				GameObject obj = Instantiate (shot, transform.position + dir , shot.transform.rotation);
+				obj.GetComponent<Rigidbody>().velocity = 8.0f * dir;
+				//--numBullets;
 			}
 			else if (Mathf.Abs (newPos.x - transform.position.x) < 0.5){
 					if (newPos.z < transform.position.z)
 						dir = Vector3.back;
 					else
 						dir = Vector3.forward;
+				GameObject obj = Instantiate (shot, transform.position + dir , shot.transform.rotation);
+				obj.GetComponent<Rigidbody>().velocity = 8.0f * dir;
+				//--numBullets;
 			}
-			GameObject obj = Instantiate (shot, transform.position + dir , shot.transform.rotation);
-			obj.GetComponent<Rigidbody>().velocity = 8.0f * dir;
-			--numBullets;
-
-			}
+		}
 			
 	}
 }

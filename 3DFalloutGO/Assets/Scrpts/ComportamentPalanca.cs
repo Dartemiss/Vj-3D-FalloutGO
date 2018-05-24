@@ -45,8 +45,11 @@ public class ComportamentPalanca : MonoBehaviour {
 		else
 			altura = -0.1f;
 		platform.Translate (0, altura, 0);
-		//transform.Translate (0, altura, 0);
-		//mainCharacter.Translate (0,altura,0);
+		if(Mathf.Abs(Vector3.Distance(mainCharacter.position , platform.position))<4.0f){
+			transform.Translate (0, altura, 0);
+			mainCharacter.Translate (0,altura,0);
+
+		}
 		aux = aux + 0.1f;
 		if (4.0f < aux) {
 			aux = 0.0f;

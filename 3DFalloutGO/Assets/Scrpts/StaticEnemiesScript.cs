@@ -8,10 +8,10 @@ public class StaticEnemiesScript : MonoBehaviour {
 	Transform enemy;
 	GameObject floor;
 	public GameObject shot;
-	int numEnemies = 1;
+	public int numEnemies = 4;
 	bool dead = false;
 	public float speed = 8.0f;
-	Vector3[] floorLocations = new Vector3[1];
+	Vector3[] floorLocations = new Vector3[20];
 	// Use this for initialization
 	void Start () {
 		for (int i = 0; numEnemies > i; ++i) {
@@ -27,6 +27,7 @@ public class StaticEnemiesScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		numEnemies = gameObject.transform.childCount - 1;
 		for (int i = 0; numEnemies > i; ++i) {
 			enemy = gameObject.transform.GetChild (i);
 			checkAndKill ();
@@ -42,8 +43,20 @@ public class StaticEnemiesScript : MonoBehaviour {
 			if(Vector3.Distance (mainCharacter.transform.position, enemy.position) <= 4.0f){
 				//mainCharacter.transform.Rotate(-90.0f,0,0);
 				dead = true;
-				GameObject obj = Instantiate (shot, enemy.transform.position + Vector3.forward, shot.transform.rotation);
-				obj.GetComponent<Rigidbody>().velocity = speed * Vector3.forward;
+				if (enemy.transform.rotation.eulerAngles.y == 270) {
+					GameObject obj = Instantiate (shot, enemy.transform.position + Vector3.left, shot.transform.rotation);
+					obj.GetComponent<Rigidbody> ().velocity = speed * Vector3.left;
+				} else if(enemy.transform.rotation.eulerAngles.y == 0) {
+					GameObject obj = Instantiate (shot, enemy.transform.position + Vector3.forward, shot.transform.rotation);
+					obj.GetComponent<Rigidbody> ().velocity = speed * Vector3.forward;
+				} else if(enemy.transform.rotation.eulerAngles.y == 90) {
+					GameObject obj = Instantiate (shot, enemy.transform.position + Vector3.right, shot.transform.rotation);
+					obj.GetComponent<Rigidbody> ().velocity = speed * Vector3.right;
+				} else if(enemy.transform.rotation.eulerAngles.y == 180) {
+					GameObject obj = Instantiate (shot, enemy.transform.position + Vector3.back, shot.transform.rotation);
+					obj.GetComponent<Rigidbody> ().velocity = speed * Vector3.back;
+				}
+
 			}
 		}
 	}
@@ -56,9 +69,8 @@ public class StaticEnemiesScript : MonoBehaviour {
 				Vector3 newPos = hit.transform.position;
 				if (Vector3.Distance (mainCharacter.transform.position, newPos) < 5.0f) {
 					for(int i = 0;numEnemies >i;++i){
-						if (floorLocations [i] == newPos) {
+						if (Vector3.Distance ( floorLocations [i], newPos) < 1.0f) {
 							enemy = gameObject.transform.GetChild (i);
-							enemy.transform.Rotate (90.0f, 0, 0);
 							Destroy (enemy.gameObject);
 						}
 					}
