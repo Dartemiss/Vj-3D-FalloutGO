@@ -22,10 +22,12 @@ public class GamplayScript : MonoBehaviour {
 	int numBullets = 0;
 	public Camera myCamera;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    Animator m_Animator;
+
+    // Use this for initialization
+    void Start () {
+        m_Animator = GetComponentInChildren<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -102,7 +104,8 @@ public class GamplayScript : MonoBehaviour {
 	}
 
 	void moveEntitiesField () {
-		transform.Translate(new Vector3 (0,0,0.1f));
+        m_Animator.Play("Walk");
+        transform.Translate(new Vector3 (0,0,0.1f));
 		if (Vector3.Distance(new Vector3(transform.position.x,0.0f,transform.position.z),new Vector3(newPos.x,0.0f,newPos.z)) < 0.1f) {
 			moving = false;
 			transform.Translate(new Vector3 (0,0,0.1f));
@@ -213,7 +216,20 @@ public class GamplayScript : MonoBehaviour {
 		}
 	}
 
-	void realShotTime(){
+
+    public IEnumerator shootingDelay(Vector3 dir)
+    {
+        yield return new WaitForSeconds(0.8f);
+
+        AudioSource audioS = GetComponent<AudioSource>();
+        audioS.Play();
+        GameObject obj = Instantiate(shot, transform.position + dir, shot.transform.rotation);
+        obj.GetComponent<Rigidbody>().velocity = 8.0f * dir;
+
+    }
+
+
+    void realShotTime(){
 		transform.LookAt (new Vector3 (newPos.x, transform.position.y, newPos.z));
 		if (Mathf.Abs (newPos.y - transform.position.y) < 0.2) {
 			//0 forward, 1 back, 2 right 3 left
@@ -230,11 +246,11 @@ public class GamplayScript : MonoBehaviour {
 					else
 						dir = Vector3.forward;
 			}
-			GameObject obj = Instantiate (shot, transform.position + dir , shot.transform.rotation);
-			obj.GetComponent<Rigidbody>().velocity = 8.0f * dir;
-			--numBullets;
 
-			}
+            m_Animator.Play("Shoot");
+            StartCoroutine(shootingDelay(dir));
+            --numBullets;
+        }
 			
 	}
 }
