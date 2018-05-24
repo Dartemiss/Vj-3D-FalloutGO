@@ -244,18 +244,12 @@ public class GamplayScript : MonoBehaviour {
 					dir = Vector3.left;
 				else
 					dir = Vector3.right;
-				GameObject obj = Instantiate (shot, transform.position + dir , shot.transform.rotation);
-				obj.GetComponent<Rigidbody>().velocity = 8.0f * dir;
-				//--numBullets;
 			}
 			else if (Mathf.Abs (newPos.x - transform.position.x) < 0.5){
 					if (newPos.z < transform.position.z)
 						dir = Vector3.back;
 					else
 						dir = Vector3.forward;
-				GameObject obj = Instantiate (shot, transform.position + dir , shot.transform.rotation);
-				obj.GetComponent<Rigidbody>().velocity = 8.0f * dir;
-				//--numBullets;
 			}
 			m_Animator.Play("Shoot");
 			StartCoroutine(shootingDelay(dir));
