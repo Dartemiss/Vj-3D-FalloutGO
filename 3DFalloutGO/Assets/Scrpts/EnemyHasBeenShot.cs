@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemyHasBeenShot : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+
+    public GameObject deathEffect;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -17,9 +19,13 @@ public class EnemyHasBeenShot : MonoBehaviour {
 	void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.tag == "my_shot") {
-			Destroy (collision.gameObject);
-			Destroy (gameObject);
+			Destroy (collision.gameObject, 2);
+            var particles = Instantiate(deathEffect, transform);
+            Destroy(particles.gameObject, 2);
+            GetComponentInChildren<MeshRenderer>().enabled = false;
+            GetComponent<BoxCollider>().enabled = false;
+            Destroy (gameObject, 2);
 
-		}
+        }
 	}
 }

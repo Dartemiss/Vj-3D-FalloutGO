@@ -11,7 +11,7 @@ public class PlayAnimation : MonoBehaviour
         old_posX = transform.position.x;
         old_posY = transform.position.y;
         old_posZ = transform.position.z;
-        m_Animator = GetComponent<Animator>();
+        m_Animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -19,11 +19,11 @@ public class PlayAnimation : MonoBehaviour
         if (old_posY == transform.position.y) { 
             if (old_posX != transform.position.x || old_posZ != transform.position.z)
             {
-                m_Animator.Play("Walk");
+                //m_Animator.Play("Walk");
             }
             else
             {
-                m_Animator.Play("Idle");
+                //m_Animator.Play("Idle");
             }
             
         }
