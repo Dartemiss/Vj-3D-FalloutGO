@@ -13,6 +13,7 @@ TagManager:
   - floor_ammo
   - enemy
   - my_shot
+  - collectible
   layers:
   - Default
   - TransparentFX
