@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GamplayScript : MonoBehaviour {
 
@@ -25,10 +26,13 @@ public class GamplayScript : MonoBehaviour {
 	Vector3 offsetCam = new Vector3 (-1.0f,12.0f,-18.0f);
 
 	Animator m_Animator;
+    public Text ammoText;
+    public GameObject acquireBobblehead;
 
 	// Use this for initialization
 	void Start () {
 		m_Animator = GetComponentInChildren<Animator>();
+        updateUIBullets();
 	}
 	
 	// Update is called once per frame
@@ -88,10 +92,18 @@ public class GamplayScript : MonoBehaviour {
 						if (hit.transform.gameObject.tag == "floor_ammo") {
 							numBullets++;
 							hit.transform.gameObject.tag = "Floor";
+                            updateUIBullets();
 						}
 					}
 				}
-			}
+                if (hit.transform.tag == "collectible")
+                {
+                    acquireBobblehead.SetActive(true);
+                    AudioSource audioBobble = hit.transform.gameObject.GetComponent<AudioSource>();
+                    audioBobble.Play();
+                    StartCoroutine(bobbleDisappear(hit));
+                }
+            }
 		}
 		if (moving) {
 			moveEntitiesField ();
@@ -222,17 +234,23 @@ public class GamplayScript : MonoBehaviour {
 		}
 	}
 
-	    public IEnumerator shootingDelay(Vector3 dir)
-	    {
-		        yield return new WaitForSeconds(0.8f);
+	public IEnumerator shootingDelay(Vector3 dir)
+	{
+		yield return new WaitForSeconds(0.8f);
 
-		        AudioSource audioS = GetComponent<AudioSource>();
-		        audioS.Play();
-				Vector3 alturaGun = new Vector3 (0, 1.5f, 0);
-		        GameObject obj = Instantiate(shot, transform.position + dir + alturaGun, shot.transform.rotation);
-		        obj.GetComponent<Rigidbody>().velocity = 8.0f * dir;
+		AudioSource audioS = GetComponent<AudioSource>();
+		audioS.Play();
+		Vector3 alturaGun = new Vector3 (0, 1.5f, 0);
+		GameObject obj = Instantiate(shot, transform.position + dir + alturaGun, shot.transform.rotation);
+		obj.GetComponent<Rigidbody>().velocity = 8.0f * dir;
 
-		    }
+	}
+
+    public IEnumerator bobbleDisappear(RaycastHit hit)
+    {
+        yield return new WaitForSeconds(1.0f);
+        Destroy(hit.transform.gameObject);
+    }
 
 
 	void realShotTime(){
@@ -254,7 +272,14 @@ public class GamplayScript : MonoBehaviour {
 			}
 			m_Animator.Play("Shoot");
 			StartCoroutine(shootingDelay(dir));
+            --numBullets;
+            updateUIBullets();
 		}
 			
 	}
+
+    void updateUIBullets()
+    {
+        ammoText.text = "Ammo: " + numBullets.ToString();
+    }
 }
