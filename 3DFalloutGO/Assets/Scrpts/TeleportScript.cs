@@ -7,6 +7,7 @@ public class TeleportScript : MonoBehaviour {
 	public Transform whereToGo;
 	float timer = 0.0f;
 	float timerMax = 3.0f;
+	public float eulerRotation = 0.0f;
 	// Use this for initialization
 	void Start () {
 		
@@ -16,8 +17,10 @@ public class TeleportScript : MonoBehaviour {
 	void Update () {
 		if (Vector3.Distance (mainCharacter.transform.position, transform.position) < 1.0f) {
 			timer += Time.deltaTime;
-			if(timerMax<timer)
+			if (timerMax < timer) {
 				mainCharacter.transform.position = new Vector3 (whereToGo.position.x, whereToGo.position.y + 0.51f, whereToGo.position.z);
+				mainCharacter.transform.Rotate (0, eulerRotation, 0);
+			}
 		}
 	}
 		

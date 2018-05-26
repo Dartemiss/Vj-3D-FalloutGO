@@ -22,7 +22,8 @@ public class EnemyHasBeenShot : MonoBehaviour {
 			Destroy (collision.gameObject, 1);
             var particles = Instantiate(deathEffect, transform);
             Destroy(particles.gameObject, 1);
-            GetComponentInChildren<MeshRenderer>().enabled = false;
+			//GameObject aux = gameObject.transform.GetChild (0).gameObject;
+			GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
             GetComponent<BoxCollider>().enabled = false;
             Destroy (gameObject, 1);
 

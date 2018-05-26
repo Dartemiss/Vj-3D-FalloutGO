@@ -11,6 +11,7 @@ public class ComportamentPalanca : MonoBehaviour {
 	public bool updown = true;
 	bool active = false;
 	float aux = 0.0f;
+	public float howmany = 4.0f;
 	// Use this for initialization
 	void Start () {
 		
@@ -35,6 +36,8 @@ public class ComportamentPalanca : MonoBehaviour {
 			movePlatformY ();
 		else if (active && typeButton == 1)
 			movePlatformZ ();
+		else if (active && typeButton == 2)
+			movePlatformX ();
 
 	}
 
@@ -45,13 +48,13 @@ public class ComportamentPalanca : MonoBehaviour {
 		else
 			altura = -0.1f;
 		platform.Translate (0, altura, 0);
-		if(Mathf.Abs(Vector3.Distance(mainCharacter.position , platform.position))<4.0f){
+		if(Mathf.Abs(Vector3.Distance(mainCharacter.position , platform.position))<2.0f){
 			transform.Translate (0, altura, 0);
 			mainCharacter.Translate (0,altura,0);
 
 		}
 		aux = aux + 0.1f;
-		if (4.0f < aux) {
+		if (howmany < aux) {
 			aux = 0.0f;
 			updown = !updown;
 			active = false;
@@ -67,8 +70,25 @@ public class ComportamentPalanca : MonoBehaviour {
 		platform.Translate (dist, 0, 0);
 		//transform.Translate();
 		aux = aux + 0.1f;
-		if(4.0f< aux){
+		if(howmany< aux){
 			aux = 0.0f;
+			updown = !updown;
+			active = false;
+		}
+	}
+
+	void movePlatformX(){
+		float dist;
+		if (updown)
+			dist = 0.1f;
+		else
+			dist = -0.1f;
+		platform.Translate (0, 0, dist);
+		//transform.Translate();
+		aux = aux + 0.1f;
+		if(howmany< aux){
+			aux = 0.0f;
+			platform.Translate (0, 0, -dist);
 			updown = !updown;
 			active = false;
 		}

@@ -38,10 +38,10 @@ public class StaticEnemiesScript : MonoBehaviour {
 	void checkAndKill(){
 		Vector3 dirFromAtoB = (mainCharacter.transform.position - enemy.position).normalized;
 		float dotProd = Vector3.Dot (dirFromAtoB, enemy.forward);
+
 		if (dotProd > 0.9 && !dead) {
 			//enemy.Rotate (0, 90, 0);
-			if(Vector3.Distance (mainCharacter.transform.position, enemy.position) <= 4.0f){
-				//mainCharacter.transform.Rotate(-90.0f,0,0);
+			if(Vector3.Distance (mainCharacter.transform.position, enemy.position) <= 4.1f){
 				dead = true;
 				if (enemy.transform.rotation.eulerAngles.y == 270) {
 					GameObject obj = Instantiate (shot, enemy.transform.position + Vector3.left, shot.transform.rotation);

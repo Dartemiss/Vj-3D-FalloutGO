@@ -27,7 +27,6 @@ public class CuchillaGiraGira : MonoBehaviour {
 			RaycastHit hit;
 
 			if (Physics.Raycast (ray, out hit, 100)) {
-				//Debug.Log( hit.transform.gameObject.name );
 				newPos = hit.transform.position;
 				if ((Vector3.Distance (mainCharacter.transform.position, newPos)) < 5.0f && (2.0f < Vector3.Distance (mainCharacter.transform.position, newPos))) {
 					moving = true;
@@ -63,7 +62,7 @@ public class CuchillaGiraGira : MonoBehaviour {
 		} else if (direction == 2) {
 			transform.Translate (0, 0, 0.1f);
 		}
-
+		Debug.Log (Vector3.Distance (transform.position, currentPos));
 		if (Vector3.Distance (transform.position, currentPos) < 0.25f) {
 			moving = false;
 			whereimgoing = whereimgoing + posneg;
