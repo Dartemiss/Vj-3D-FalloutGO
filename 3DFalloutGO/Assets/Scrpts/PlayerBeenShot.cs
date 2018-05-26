@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerBeenShot : MonoBehaviour {
 
+	public int lvl = 0;
 	// Use this for initialization
 	void Start () {
 		
@@ -19,7 +20,7 @@ public class PlayerBeenShot : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "shot") {
 			Destroy (collision.gameObject);
-			SceneManager.LoadScene(1);
+			SceneManager.LoadScene(lvl);
 
 		}
 	}

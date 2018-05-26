@@ -34,12 +34,12 @@ public class GamplayScript : MonoBehaviour {
 		m_Animator = GetComponentInChildren<Animator>();
         updateUIBullets();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		//myCamera.transform.position = transform.position + offsetCam;
 		if(Input.GetKeyDown("t")){
-			transform.position = new Vector3 (3.7f, 44f + 0.51f, -24.0f);
+			transform.position = new Vector3 (tp.x, tp.y + 0.51f, tp.z);
 		}
 
 		if (Input.GetMouseButtonDown (0) && !currently_moving) {
@@ -169,8 +169,8 @@ public class GamplayScript : MonoBehaviour {
 	}
 
 	void moveEntitiesWall () {
-		Debug.Log (newPos);
 		int direction = goUpDownRightLeft ();
+		//Debug.Log (direction);
 		if(direction == 0)
 			transform.Translate(new Vector3 (-0.1f,0,0));
 		else if(direction == 1)
@@ -220,10 +220,28 @@ public class GamplayScript : MonoBehaviour {
 	int goUpDownRightLeft(){
 		float dif = Mathf.Abs (newPos.y - actualPos.y);
 		if (dif <= 0.2f) {
-			if (actualPos.x < newPos.x)
-				return 1;
-			else
-				return 0;
+			Debug.Log (transform.rotation.eulerAngles.y); 
+			if (transform.rotation.eulerAngles.y < 0.2f && -0.2 < transform.rotation.eulerAngles.y) {
+				if (actualPos.x < newPos.x)
+					return 1;
+				else
+					return 0;
+			} else if ((transform.rotation.eulerAngles.y < 180.2f && 179.8f < transform.rotation.eulerAngles.y)) {
+				if (actualPos.x < newPos.x)
+					return 0;
+				else
+					return 1;
+			} else if ((transform.rotation.eulerAngles.y < 90.2f && 89.8f < transform.rotation.eulerAngles.y)) {
+				if (actualPos.z < newPos.z)
+					return 0;
+				else
+					return 1;
+			} else {
+				if (actualPos.z < newPos.z)
+					return 1;
+				else
+					return 0;
+			}
 		
 		} else{ 
 			if (actualPos.y < newPos.y)
@@ -272,7 +290,7 @@ public class GamplayScript : MonoBehaviour {
 			}
 			m_Animator.Play("Shoot");
 			StartCoroutine(shootingDelay(dir));
-            --numBullets;
+            //--numBullets;
             updateUIBullets();
 		}
 			

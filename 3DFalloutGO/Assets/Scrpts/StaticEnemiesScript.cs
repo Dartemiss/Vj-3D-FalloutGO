@@ -10,7 +10,7 @@ public class StaticEnemiesScript : MonoBehaviour {
 	public GameObject shot;
 	public int numEnemies = 4;
 	bool dead = false;
-	public float speed = 8.0f;
+	public float speed;
 	Vector3[] floorLocations = new Vector3[20];
 	// Use this for initialization
 	void Start () {
@@ -31,7 +31,7 @@ public class StaticEnemiesScript : MonoBehaviour {
 		for (int i = 0; numEnemies > i; ++i) {
 			enemy = gameObject.transform.GetChild (i);
 			checkAndKill ();
-			checkClick ();
+			//checkClick ();
 		}
 	}
 
@@ -43,6 +43,7 @@ public class StaticEnemiesScript : MonoBehaviour {
 			//enemy.Rotate (0, 90, 0);
 			if(Vector3.Distance (mainCharacter.transform.position, enemy.position) <= 4.1f){
 				dead = true;
+				mainCharacter.gameObject.GetComponent<GamplayScript >().enabled = false;
 				if (enemy.transform.rotation.eulerAngles.y == 270) {
 					GameObject obj = Instantiate (shot, enemy.transform.position + Vector3.left, shot.transform.rotation);
 					obj.GetComponent<Rigidbody> ().velocity = speed * Vector3.left;
@@ -72,7 +73,18 @@ public class StaticEnemiesScript : MonoBehaviour {
 						if (Vector3.Distance ( floorLocations [i], newPos) < 1.0f) {
 							enemy = gameObject.transform.GetChild (i);
 							Destroy (enemy.gameObject);
+							Vector3[] aux = new Vector3[20];
+							int offset = 0;
+							for(int j = 0;numEnemies >j;++j){
+								if (i == j)
+									offset = 1;
+								aux [j] = floorLocations [j + offset];
+											
+							}
+							--numEnemies;
+							floorLocations = aux;	
 						}
+					  
 					}
 				}
 			}

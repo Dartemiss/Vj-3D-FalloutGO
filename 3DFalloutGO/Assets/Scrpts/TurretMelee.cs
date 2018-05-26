@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetAmmo : MonoBehaviour {
-	public Transform mainCharacter;
+public class TurretMelee : MonoBehaviour {
 
+	public Transform mainCharacter;
 	// Use this for initialization
 	void Start () {
 		
@@ -12,8 +12,8 @@ public class GetAmmo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Vector3.Distance (transform.position, mainCharacter.transform.position) < 1.0f) {
-			Destroy (gameObject, 0.5f);
+		if (Vector3.Distance (mainCharacter.transform.position, transform.position) < 1.2f) {
+			Destroy (gameObject);
 		}
 	}
 }

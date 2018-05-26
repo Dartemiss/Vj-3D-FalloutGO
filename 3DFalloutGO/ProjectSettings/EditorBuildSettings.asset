@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/MainMenu.unity
     guid: f2a9c036fcfc843438154bf7ee1deb70
   - enabled: 1
-    path: Assets/FalloutGO.unity
-    guid: a5aff5877824af04d8bd68b7129e63bb
+    path: Assets/Nivell1.unity
+    guid: c5a04a688d407f04d917662e35b02229
   - enabled: 1
     path: Assets/Nivell2.unity
     guid: 8f8e526cb4739bc42a98a5d7e7532e7e
+  - enabled: 1
+    path: Assets/FalloutGO.unity
+    guid: a5aff5877824af04d8bd68b7129e63bb
   m_configObjects: {}

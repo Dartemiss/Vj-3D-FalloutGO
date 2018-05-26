@@ -13,9 +13,10 @@ public class ComportamentPatronEnemies : MonoBehaviour {
 	Vector3 currentPos;
 	int whereimgoing = 1;
 	bool moving = false;
-	int direction = 2;
+	public int direction = 2;
 	int posneg = 1;
 	public int numberPlats;
+	public int mylvl;
 	// Use this for initialization
 	void Start () {
 		
@@ -28,28 +29,32 @@ public class ComportamentPatronEnemies : MonoBehaviour {
 			RaycastHit hit;
 
 			if (Physics.Raycast (ray, out hit, 100)) {
-				//Debug.Log( hit.transform.gameObject.name );
 				newPos = hit.transform.position;
 				if ((Vector3.Distance (mainCharacter.transform.position, newPos)) < 5.0f && (2.0f < Vector3.Distance (mainCharacter.transform.position, newPos))) {
 					moving = true;
 					currentPos = platPositions.transform.GetChild (whereimgoing).position;
 					if (1.0f < Mathf.Abs (currentPos.x - transform.position.x)) {
+						/*
 						if (direction != 0) {
 							if (posneg == 1)
 								transform.Rotate (0, 90, 0);
 							else
 								transform.Rotate (0, -90, 0);
-						}
+						}*/
+						transform.LookAt (currentPos);
 						direction = 0;	
 					} else if (1.0f < Mathf.Abs (currentPos.y - transform.position.y)) {
+						transform.LookAt (currentPos);
 						direction = 1;
 					} else if (1.0f < Mathf.Abs (currentPos.z - transform.position.z)) {
+						/*
 						if (direction != 2) {
 							if (posneg == 1)
 								transform.Rotate (0, 90, 0);
 							else
 								transform.Rotate (0, -90, 0);
-						}
+						}*/
+						transform.LookAt (currentPos);
 						direction = 2;
 					}
 				}
@@ -59,7 +64,7 @@ public class ComportamentPatronEnemies : MonoBehaviour {
 		if (moving)
 			moveEnemy ();
 		if (Vector3.Distance (transform.position, mainCharacter.position) < 1.0f) {
-			SceneManager.LoadScene(1);
+			SceneManager.LoadScene(mylvl);
 		}
 	}
 

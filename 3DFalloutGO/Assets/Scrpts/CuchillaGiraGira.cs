@@ -32,14 +32,17 @@ public class CuchillaGiraGira : MonoBehaviour {
 					moving = true;
 					currentPos = serraPositions.transform.GetChild (whereimgoing).position;
 					if (1.0f < Mathf.Abs (currentPos.x - transform.position.x)) {
-						if(direction != 0)
-							transform.Rotate (0, 270, 0);
+						//if(direction != 0)
+							//transform.Rotate (0, 270, 0);
+						transform.LookAt(currentPos);
 						direction = 0;	
 					} else if (1.0f < Mathf.Abs (currentPos.y - transform.position.y)) {
+						transform.LookAt(currentPos);
 						direction = 1;
 					} else if (1.0f < Mathf.Abs (currentPos.z - transform.position.z)) {
-						if(direction != 2)
-							transform.Rotate (0, 90, 0);
+						//if(direction != 2)
+							//transform.Rotate (0, 90, 0);
+						transform.LookAt(currentPos);
 						direction = 2;
 					}
 				}
@@ -62,7 +65,6 @@ public class CuchillaGiraGira : MonoBehaviour {
 		} else if (direction == 2) {
 			transform.Translate (0, 0, 0.1f);
 		}
-		Debug.Log (Vector3.Distance (transform.position, currentPos));
 		if (Vector3.Distance (transform.position, currentPos) < 0.25f) {
 			moving = false;
 			whereimgoing = whereimgoing + posneg;
