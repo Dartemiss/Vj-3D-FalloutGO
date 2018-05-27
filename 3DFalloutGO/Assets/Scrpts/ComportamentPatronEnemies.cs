@@ -78,7 +78,7 @@ public class ComportamentPatronEnemies : MonoBehaviour {
 			transform.Translate (0, 0, 0.1f);
 		}
 
-		if (Vector3.Distance (transform.position, currentPos) < 0.65f) {
+		if (Vector3.Distance (transform.position, currentPos) < 0.55f) {
 			moving = false;
 			whereimgoing = whereimgoing + posneg;
 			if (whereimgoing == -1) {

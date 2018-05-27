@@ -220,7 +220,6 @@ public class GamplayScript : MonoBehaviour {
 	int goUpDownRightLeft(){
 		float dif = Mathf.Abs (newPos.y - actualPos.y);
 		if (dif <= 0.2f) {
-			Debug.Log (transform.rotation.eulerAngles.y); 
 			if (transform.rotation.eulerAngles.y < 0.2f && -0.2 < transform.rotation.eulerAngles.y) {
 				if (actualPos.x < newPos.x)
 					return 1;
@@ -273,7 +272,7 @@ public class GamplayScript : MonoBehaviour {
 
 	void realShotTime(){
 		transform.LookAt (new Vector3 (newPos.x, transform.position.y, newPos.z));
-		if (Mathf.Abs (newPos.y - transform.position.y) < 0.2) {
+		if (Mathf.Abs (newPos.y - transform.position.y) < 1.0f) {
 			//0 forward, 1 back, 2 right 3 left
 			Vector3 dir = Vector3.back;
 			if (Mathf.Abs (newPos.z - transform.position.z) < 0.5) {

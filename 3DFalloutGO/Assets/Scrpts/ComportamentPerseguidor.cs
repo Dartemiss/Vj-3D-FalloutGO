@@ -22,6 +22,9 @@ public class ComportamentPerseguidor : MonoBehaviour {
 	Vector3 firstPos;
 	Vector3 secondPos;
 
+	public int numLvl = 3;
+	public Transform tp;
+
 	string currentWhere;
 	string firstWhere;
 	string secondWhere;
@@ -53,16 +56,20 @@ public class ComportamentPerseguidor : MonoBehaviour {
 			} else if (jumpFloorToVertical) {
 				floorToVertical ();
 			}
+			if (Vector3.Distance (transform.position, tp.position) < 1.0f) {
+				Destroy (gameObject);
+			}
 		}
 		if (Vector3.Distance (transform.position, mainCharacter.position) < 1.0f) {
-			SceneManager.LoadScene(1);
+			SceneManager.LoadScene(numLvl);
 		}
 	}
 
 	void checkPJ(){
 		Vector3 dirFromAtoB = (mainCharacter.transform.position - transform.position).normalized;
 		float dotProd = Vector3.Dot (dirFromAtoB, transform.forward);
-		if ( dotProd>0.9) {
+		float dist = Vector3.Distance (mainCharacter.transform.position, transform.position);
+		if ( dotProd>0.9 && 10.0f> dist ) {
 			active = true;
 		}
 	}
@@ -103,7 +110,7 @@ public class ComportamentPerseguidor : MonoBehaviour {
 						}
 						suelo = false;
 
-					} else if(currentWhere == "Floor" || currentWhere == "floor_enemy" || currentWhere == "broken_floor" || currentWhere == "floor_ammo" || currentWhere == "enemy") {
+					} else if(currentWhere == "Floor" || currentWhere == "floor_enemy" || currentWhere == "broken_floor") {
 						if (suelo) {
 							moving = true;
 							currently_moving = true;

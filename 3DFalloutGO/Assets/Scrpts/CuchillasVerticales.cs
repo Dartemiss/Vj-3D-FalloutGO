@@ -33,7 +33,6 @@ public class CuchillasVerticales : MonoBehaviour {
 
 			if (Physics.Raycast (ray, out hit, 100)) {
 				newPos = hit.transform.position;
-				Debug.Log (Vector3.Distance (mainCharacter.transform.position, newPos));
 				if ((Vector3.Distance (mainCharacter.transform.position, newPos)) < 5.0f && (2.0f < Vector3.Distance (mainCharacter.transform.position, newPos))) {
 					moving = true;
 					currentPos = serraPositions.transform.GetChild (whereimgoing).position;

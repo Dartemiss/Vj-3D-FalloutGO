@@ -14,6 +14,7 @@ TagManager:
   - enemy
   - my_shot
   - collectible
+  - button
   layers:
   - Default
   - TransparentFX

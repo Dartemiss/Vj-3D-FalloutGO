@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Nivell2.unity
     guid: 8f8e526cb4739bc42a98a5d7e7532e7e
   - enabled: 1
+    path: Assets/Nivell 3.unity
+    guid: 40f4508aae719794986f63444678f4fe
+  - enabled: 0
     path: Assets/FalloutGO.unity
     guid: a5aff5877824af04d8bd68b7129e63bb
   m_configObjects: {}
