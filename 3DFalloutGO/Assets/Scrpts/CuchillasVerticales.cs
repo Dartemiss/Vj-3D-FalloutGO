@@ -15,9 +15,10 @@ public class CuchillasVerticales : MonoBehaviour {
 	public int direction = 1;
 	int posneg = 1;
 	public int numberPlats;
-	public int xgir =-90;
-	public int ygir =90;
-	public int zgir =90;
+	public int xgir;
+	public int ygir;
+	public int zgir;
+	public bool lado = false;
 
 	// Use this for initialization
 	void Start () {
@@ -37,18 +38,37 @@ public class CuchillasVerticales : MonoBehaviour {
 					moving = true;
 					currentPos = serraPositions.transform.GetChild (whereimgoing).position;
 					if (1.0f < Mathf.Abs (currentPos.x - transform.position.x)) {
-						if(direction != 0)
-							transform.Rotate (0, 0, xgir);
-						direction = 0;	
-					} else if (1.0f < Mathf.Abs (currentPos.y - transform.position.y)) {
-						if(direction != 1)
-							transform.Rotate (0, 0, ygir);
-						direction = 1;
-					} else if (1.0f < Mathf.Abs (currentPos.z - transform.position.z)) {
+						if (!lado) {
+							if (direction != 0)
+								transform.Rotate (0, 0, xgir);
+							direction = 0;	
+						} else {
+							transform.LookAt(currentPos);
+							direction = 2;
+							transform.Rotate (0, 0, 90);
+						}
 
-						if(direction != 2)
-							transform.Rotate (0, 0, zgir);
-						direction = 2;
+					} else if (1.0f < Mathf.Abs (currentPos.y - transform.position.y)) {
+						if (!lado) {
+							if (direction != 1)
+								transform.Rotate (0, 0, ygir);
+							direction = 1;
+						} else {
+							transform.LookAt(currentPos);
+							direction = 2;
+							transform.Rotate (0, 0, 90);
+						}
+					} else if (1.0f < Mathf.Abs (currentPos.z - transform.position.z)) {
+						if (!lado) {
+							if (direction != 2)
+								transform.Rotate (0, 0, zgir);
+							direction = 2;
+						} else {
+							transform.LookAt(currentPos);
+							direction = 2;
+							transform.Rotate (0, 0, 90);
+						}
+
 					}
 				}
 			}
