@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 653c9fc9f5aad174eb6f03eadc6a6542
+guid: 70bea6638d8e5b449a36e978ca1d4082
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -72,15 +72,20 @@ ModelImporter:
     7400002: Armature|Action.002
     7400004: Armature|Action.003
     7400006: Armature|ArmatureAction
-    7400008: Armature|Idle
-    7400010: Armature|LampAction
-    7400012: Armature|MoveHand
-    7400014: Armature|Run
-    7400016: Armature|Shoot
-    7400018: Armature|Walk
-    7400020: Lamp|Action.001
-    7400022: Lamp|ArmatureAction
-    7400024: Lamp|LampAction
+    7400008: Armature|ClimbContUp
+    7400010: Armature|ClimbUp
+    7400012: Armature|ClimbUp2
+    7400014: Armature|ClimbUpAgain
+    7400016: Armature|Idle
+    7400018: Armature|LampAction
+    7400020: Armature|MoveHand
+    7400022: Armature|Run
+    7400024: Armature|Shoot
+    7400026: Armature|Walk
+    7400028: Lamp|Action.001
+    7400030: Lamp|ArmatureAction
+    7400032: Lamp|ClimbContUp
+    7400034: Lamp|LampAction
     9500000: //RootNode
     10800000: Lamp
     13700000: vaultboy3
@@ -206,6 +211,118 @@ ModelImporter:
       takeName: Armature|ArmatureAction
       firstFrame: 0
       lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|ClimbContUp
+      takeName: Armature|ClimbContUp
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|ClimbUp
+      takeName: Armature|ClimbUp
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|ClimbUp2
+      takeName: Armature|ClimbUp2
+      firstFrame: 0
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|ClimbUpAgain
+      takeName: Armature|ClimbUpAgain
+      firstFrame: 0
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -428,6 +545,34 @@ ModelImporter:
     - serializedVersion: 16
       name: Lamp|ArmatureAction
       takeName: Lamp|ArmatureAction
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Lamp|ClimbContUp
+      takeName: Lamp|ClimbContUp
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0

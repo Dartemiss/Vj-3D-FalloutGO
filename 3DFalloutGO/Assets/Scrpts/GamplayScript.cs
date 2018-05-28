@@ -59,7 +59,8 @@ public class GamplayScript : MonoBehaviour {
 							if (transform.position.y < newPos.y) {
 								jumping = true;
 								transform.LookAt (new Vector3 (newPos.x, transform.position.y, newPos.z));
-							}
+                                m_Animator.Play("ClimbFirst");
+                            }
 							else {
 								jumpFloorToVertical = true;
 								zz = true;
