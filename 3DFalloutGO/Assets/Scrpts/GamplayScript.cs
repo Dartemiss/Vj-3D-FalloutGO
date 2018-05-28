@@ -28,7 +28,11 @@ public class GamplayScript : MonoBehaviour {
 	Animator m_Animator;
     public Text ammoText;
     public GameObject acquireBobblehead;
+    public Text bobbleRecountText;
+    int bobbleRecount = 0;
     bool availableAnimation = true;
+    public GameObject imageBobbNoAcq;
+    public GameObject imageBobbYesAcq;
 
     // Use this for initialization
     void Start () {
@@ -107,6 +111,13 @@ public class GamplayScript : MonoBehaviour {
                     AudioSource audioBobble = hit.transform.gameObject.GetComponent<AudioSource>();
                     audioBobble.Play();
                     StartCoroutine(bobbleDisappear(hit));
+                    ++bobbleRecount;
+                    bobbleRecountText.text = bobbleRecount.ToString() + " Bobbleheads";
+                    if (bobbleRecount == 1)
+                    {
+                        imageBobbNoAcq.SetActive(false);
+                        imageBobbYesAcq.SetActive(true);
+                    }
                 }
             }
 		}

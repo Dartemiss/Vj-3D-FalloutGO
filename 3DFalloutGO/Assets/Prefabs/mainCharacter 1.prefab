@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 82312232598807760}
   m_Layer: 0
   m_Name: mainCharacter 1
-  m_TagString: Untagged
+  m_TagString: THE_character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1125,6 +1125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72fdff72b16bc3647869868c581def52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lvl: 0
 --- !u!114 &114153339872499122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1138,6 +1139,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 1592295910381326, guid: 795d347da95d28e4a9fc207a0a851b06, type: 2}
   myCamera: {fileID: 0}
+  tp: {x: 4.45, y: 28.1, z: 8}
+  ammoText: {fileID: 0}
+  acquireBobblehead: {fileID: 0}
 --- !u!114 &114752307776139214
 MonoBehaviour:
   m_ObjectHideFlags: 1

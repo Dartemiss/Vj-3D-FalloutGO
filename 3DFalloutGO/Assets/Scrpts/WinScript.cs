@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class WinScript : MonoBehaviour {
 
 	public Transform mainCharacter;
-	public int nextLvl;
+	//public int nextLvl;
+    public GameObject winPanel;
 	// Use this for initialization
 	void Start () {
 		
@@ -15,7 +16,8 @@ public class WinScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Vector3.Distance (mainCharacter.position, transform.position) < 1.0f) {
-			SceneManager.LoadScene(nextLvl);
+            winPanel.SetActive(true);
+			//SceneManager.LoadScene(nextLvl);
 		}
 	}
 }

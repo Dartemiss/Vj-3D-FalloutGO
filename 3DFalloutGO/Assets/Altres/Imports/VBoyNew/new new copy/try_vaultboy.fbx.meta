@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 46d51aee7b5a5ad4caa60808c04d1f74
+guid: e9bab2b8d924dd44ba9c4d663653f89f
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -73,24 +73,23 @@ ModelImporter:
     7400004: Armature|Action.003
     7400006: Armature|ArmatureAction
     7400008: Armature|ClimbContUp
-    7400010: Armature|ClimbIdle
-    7400012: Armature|ClimbLeft
-    7400014: Armature|ClimbRight
-    7400016: Armature|ClimbUp
-    7400018: Armature|ClimbUp2
-    7400020: Armature|ClimbUpAgain
-    7400022: Armature|ClimbUpFinal
-    7400024: Armature|Idle
-    7400026: Armature|LampAction
-    7400028: Armature|MoveHand
-    7400030: Armature|Run
-    7400032: Armature|Shoot
-    7400034: Armature|Untitled
-    7400036: Armature|Walk
-    7400038: Lamp|Action.001
-    7400040: Lamp|ArmatureAction
-    7400042: Lamp|ClimbContUp
-    7400044: Lamp|LampAction
+    7400010: Armature|ClimbLeft
+    7400012: Armature|ClimbRight
+    7400014: Armature|ClimbUp
+    7400016: Armature|ClimbUp2
+    7400018: Armature|ClimbUpAgain
+    7400020: Armature|ClimbUpFinal
+    7400022: Armature|Idle
+    7400024: Armature|LampAction
+    7400026: Armature|MoveHand
+    7400028: Armature|Run
+    7400030: Armature|Shoot
+    7400032: Armature|Untitled
+    7400034: Armature|Walk
+    7400036: Lamp|Action.001
+    7400038: Lamp|ArmatureAction
+    7400040: Lamp|ClimbContUp
+    7400042: Lamp|LampAction
     9500000: //RootNode
     10800000: Lamp
     13700000: vaultboy3
