@@ -54,54 +54,56 @@ public class GamplayScript : MonoBehaviour {
 			if( Physics.Raycast( ray, out hit, 100 ) )
 			{
                 availableAnimation = true;
-                Debug.Log(hit.transform.gameObject.tag);
+				bool isshoting = false;
 				newPos = hit.transform.position;
 				if (0 < numBullets && hit.transform.gameObject.tag == "enemy" ) {
 					realShotTime ();
+					isshoting = true;
 				}
-				actualPos = transform.position;
-				if (Vector3.Distance (transform.position, newPos) < 5.0f) {
-					if (hit.transform.gameObject.tag == "Vertical") {
-						if (suelo) {
-							if (transform.position.y < newPos.y) {
-								jumping = true;
-								transform.LookAt (new Vector3 (newPos.x, transform.position.y, newPos.z));
-                                m_Animator.Play("ClimbFirst");
-                            }
-							else {
-								jumpFloorToVertical = true;
-								zz = true;
-								transform.LookAt (new Vector3 (newPos.x, transform.position.y, newPos.z));
-								transform.Rotate (0, 180,0f, 0);
-							}
-							currently_moving = true;
-						} else {
-							escalar = true;
-							currently_moving = true;
-							//moveEntitiesWall ();
-						}
-						suelo = false;
 
-					} else if(hit.transform.gameObject.tag == "Floor" || hit.transform.gameObject.tag == "floor_enemy" || hit.transform.gameObject.tag == "broken_floor" || hit.transform.gameObject.tag == "floor_ammo" || hit.transform.gameObject.tag == "enemy") {
-						if (suelo) {
-							moving = true;
-							currently_moving = true;
-						} else {
-							if (transform.position.y < newPos.y) {
-								jumpup = true;
-                                m_Animator.Play("ClimbUpFinal");
-                                up = true;
+				actualPos = transform.position;
+				if (!isshoting) {
+					if (Vector3.Distance (transform.position, newPos) < 5.0f) {
+						if (hit.transform.gameObject.tag == "Vertical") {
+							if (suelo) {
+								if (transform.position.y < newPos.y) {
+									jumping = true;
+									transform.LookAt (new Vector3 (newPos.x, transform.position.y, newPos.z));
+									m_Animator.Play ("ClimbFirst");
+								} else {
+									jumpFloorToVertical = true;
+									zz = true;
+									transform.LookAt (new Vector3 (newPos.x, transform.position.y, newPos.z));
+									transform.Rotate (0, 180, 0f, 0);
+								}
+								currently_moving = true;
+							} else {
+								escalar = true;
+								currently_moving = true;
+								//moveEntitiesWall ();
 							}
-							else
-								jumpdown = true;
-						}
-						suelo = true;
-						currently_moving = true;
-						transform.LookAt (new Vector3 (newPos.x, transform.position.y, newPos.z));
-						if (hit.transform.gameObject.tag == "floor_ammo") {
-							numBullets++;
-							hit.transform.gameObject.tag = "Floor";
-                            updateUIBullets();
+							suelo = false;
+
+						} else if (hit.transform.gameObject.tag == "Floor" || hit.transform.gameObject.tag == "floor_enemy" || hit.transform.gameObject.tag == "broken_floor" || hit.transform.gameObject.tag == "floor_ammo" || hit.transform.gameObject.tag == "enemy") {
+							if (suelo) {
+								moving = true;
+								currently_moving = true;
+							} else {
+								if (transform.position.y < newPos.y) {
+									jumpup = true;
+									m_Animator.Play ("ClimbUpFinal");
+									up = true;
+								} else
+									jumpdown = true;
+							}
+							suelo = true;
+							currently_moving = true;
+							transform.LookAt (new Vector3 (newPos.x, transform.position.y, newPos.z));
+							if (hit.transform.gameObject.tag == "floor_ammo") {
+								numBullets++;
+								hit.transform.gameObject.tag = "Floor";
+								updateUIBullets ();
+							}
 						}
 					}
 				}
@@ -257,17 +259,17 @@ public class GamplayScript : MonoBehaviour {
 	int goUpDownRightLeft(){
 		float dif = Mathf.Abs (newPos.y - actualPos.y);
 		if (dif <= 0.2f) {
-			if (transform.rotation.eulerAngles.y < 0.2f && -0.2 < transform.rotation.eulerAngles.y) {
+			if (transform.rotation.eulerAngles.y < 5.2f && -5.2 < transform.rotation.eulerAngles.y) {
 				if (actualPos.x < newPos.x)
 					return 1;
 				else
 					return 0;
-			} else if ((transform.rotation.eulerAngles.y < 180.2f && 179.8f < transform.rotation.eulerAngles.y)) {
+			} else if ((transform.rotation.eulerAngles.y < 185.2f && 175.8f < transform.rotation.eulerAngles.y)) {
 				if (actualPos.x < newPos.x)
 					return 0;
 				else
 					return 1;
-			} else if ((transform.rotation.eulerAngles.y < 90.2f && 89.8f < transform.rotation.eulerAngles.y)) {
+			} else if ((transform.rotation.eulerAngles.y < 95.2f && 85.8f < transform.rotation.eulerAngles.y)) {
 				if (actualPos.z < newPos.z)
 					return 0;
 				else

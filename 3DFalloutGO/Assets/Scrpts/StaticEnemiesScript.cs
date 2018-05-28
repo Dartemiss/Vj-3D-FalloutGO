@@ -41,7 +41,6 @@ public class StaticEnemiesScript : MonoBehaviour {
 		if (dotProd > 0.9 && !dead) {
 			if(Vector3.Distance (mainCharacter.transform.position, enemy.position) <= 4.1f){
 				dead = true;
-				mainCharacter.gameObject.GetComponent<GamplayScript >().enabled = false;
 				if (enemy.transform.rotation.eulerAngles.y == 270) {
 					GameObject obj = Instantiate (shot, enemy.transform.position + new Vector3(0,1.5f,0) + Vector3.left, shot.transform.rotation);
 					obj.GetComponent<Rigidbody> ().velocity = speed * Vector3.left;
@@ -55,6 +54,7 @@ public class StaticEnemiesScript : MonoBehaviour {
 					GameObject obj = Instantiate (shot, enemy.transform.position + new Vector3(0,1.5f,0) + Vector3.back, shot.transform.rotation);
 					obj.GetComponent<Rigidbody> ().velocity = speed * Vector3.back;
 				}
+				//mainCharacter.gameObject.GetComponent<GamplayScript >().enabled = false;
 
 			}
 		}
