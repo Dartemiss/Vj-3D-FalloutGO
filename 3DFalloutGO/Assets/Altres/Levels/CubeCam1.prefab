@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4373621793296182}
   - component: {fileID: 33145879997693062}
   - component: {fileID: 65001004321825450}
-  - component: {fileID: 114996940104210632}
   - component: {fileID: 54331093672743666}
+  - component: {fileID: 114996940104210632}
   m_Layer: 0
   m_Name: CubeCam1
   m_TagString: Untagged

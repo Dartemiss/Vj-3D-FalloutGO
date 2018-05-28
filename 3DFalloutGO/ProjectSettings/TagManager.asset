@@ -15,6 +15,7 @@ TagManager:
   - my_shot
   - collectible
   - button
+  - THE_character
   layers:
   - Default
   - TransparentFX

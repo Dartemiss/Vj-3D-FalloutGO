@@ -28,9 +28,10 @@ public class GamplayScript : MonoBehaviour {
 	Animator m_Animator;
     public Text ammoText;
     public GameObject acquireBobblehead;
+    bool availableAnimation = true;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		m_Animator = GetComponentInChildren<Animator>();
         updateUIBullets();
 	}
@@ -48,6 +49,8 @@ public class GamplayScript : MonoBehaviour {
 
 			if( Physics.Raycast( ray, out hit, 100 ) )
 			{
+                availableAnimation = true;
+                Debug.Log(hit.transform.gameObject.tag);
 				newPos = hit.transform.position;
 				if (0 < numBullets && hit.transform.gameObject.tag == "enemy" ) {
 					realShotTime ();
@@ -82,7 +85,8 @@ public class GamplayScript : MonoBehaviour {
 						} else {
 							if (transform.position.y < newPos.y) {
 								jumpup = true;
-								up = true;
+                                m_Animator.Play("ClimbUpFinal");
+                                up = true;
 							}
 							else
 								jumpdown = true;
@@ -171,15 +175,36 @@ public class GamplayScript : MonoBehaviour {
 
 	void moveEntitiesWall () {
 		int direction = goUpDownRightLeft ();
-		//Debug.Log (direction);
-		if(direction == 0)
-			transform.Translate(new Vector3 (-0.1f,0,0));
-		else if(direction == 1)
-			transform.Translate(new Vector3 (0.1f,0,0));
-		else if(direction == 2)
-			transform.Translate(new Vector3 (0,0.1f,0));
-		else if(direction == 3)
-			transform.Translate(new Vector3 (0,-0.1f,0));
+        //Debug.Log (direction);
+        if (direction == 0)
+        {
+            transform.Translate(new Vector3(-0.1f, 0, 0));
+            if (availableAnimation)
+            {
+                m_Animator.Play("ClimbLeft");
+                availableAnimation = false;
+            }
+        }
+        else if (direction == 1)
+        {
+            transform.Translate(new Vector3(0.1f, 0, 0));
+            if (availableAnimation)
+            {
+                m_Animator.Play("ClimbRight");
+                availableAnimation = false;
+            }
+        }
+        else if (direction == 2)
+        {
+            transform.Translate(new Vector3(0, 0.1f, 0));
+            if (availableAnimation)
+            {
+                m_Animator.Play("ClimbMiddle");
+                availableAnimation = false;
+            }
+        }
+        else if (direction == 3)
+            transform.Translate(new Vector3(0, -0.1f, 0));
 		if (direction == 3 || direction == 2) {
 			if (Vector3.Distance (new Vector3 (0.0f, transform.position.y, 0.0f), new Vector3 (0.0f, newPos.y, 0.0f)) < 0.1f) {
 				escalar = false;
