@@ -20,7 +20,7 @@ public class GamplayScript : MonoBehaviour {
 	bool jumpFloorToVertical = false;
 	bool zz,yy = false;
 	bool up;
-	int numBullets = 0;
+	int numBullets = 5;
 	public Camera myCamera;
 	public Vector3 tp = new Vector3(4.45f,28.1f,8.0f);
 	Vector3 offsetCam = new Vector3 (-1.0f,12.0f,-18.0f);
@@ -56,7 +56,8 @@ public class GamplayScript : MonoBehaviour {
                 availableAnimation = true;
 				bool isshoting = false;
 				newPos = hit.transform.position;
-				if (0 < numBullets && hit.transform.gameObject.tag == "enemy" ) {
+				if (0 < numBullets && hit.transform.gameObject.tag == "enemy" && 5.0f < Vector3.Distance (transform.position, newPos)) {
+					if(Mathf.Abs(newPos.z - transform.position.z)< 1.0f || Mathf.Abs(newPos.x - transform.position.x)< 1.0f )
 					realShotTime ();
 					isshoting = true;
 				}
@@ -133,8 +134,7 @@ public class GamplayScript : MonoBehaviour {
 			jumpdownEntitiesWall ();
 		} else if (jumpup) {
 			jumpupEntitiesWall ();
-		}
-		else if (jumpFloorToVertical) {
+		} else if (jumpFloorToVertical) {
 			floorToVertical ();
 		}
 	}
@@ -237,15 +237,18 @@ public class GamplayScript : MonoBehaviour {
 		} else if (yy) {
 			transform.Translate (0,-0.1f,0);
 		}
+		aux = aux + 0.1f;
 		if (zz && !yy) {
-			if (newPos.z + 1.0f < transform.position.z) {
+			if (2.5f< aux) {
 				zz = false;
 				yy = true;
+				aux = 0.0f;
 			}
 		} else if (!zz && yy) {
-			if (transform.position.y <= newPos.y) {
+			if (2.5f < aux) {
 				zz = false;
 				yy = false;
+				aux = 0.0f;
 			}
 		} else {
 			jumpFloorToVertical = false;
@@ -314,13 +317,13 @@ public class GamplayScript : MonoBehaviour {
 		if (Mathf.Abs (newPos.y - transform.position.y) < 1.0f) {
 			//0 forward, 1 back, 2 right 3 left
 			Vector3 dir = Vector3.back;
-			if (Mathf.Abs (newPos.z - transform.position.z) < 0.5) {
+			if (Mathf.Abs (newPos.z - transform.position.z) < 1.0) {
 				if (newPos.x < transform.position.x)
 					dir = Vector3.left;
 				else
 					dir = Vector3.right;
 			}
-			else if (Mathf.Abs (newPos.x - transform.position.x) < 0.5){
+			else if (Mathf.Abs (newPos.x - transform.position.x) < 1.0f){
 					if (newPos.z < transform.position.z)
 						dir = Vector3.back;
 					else

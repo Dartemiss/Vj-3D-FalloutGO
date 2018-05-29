@@ -12341,8 +12341,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 18, y: 25, z: 18}
-  m_Center: {x: 0, y: 14, z: 0}
+  m_Size: {x: 30, y: 50, z: 30}
+  m_Center: {x: 0, y: 25, z: 0}
 --- !u!4 &660150417
 Transform:
   m_ObjectHideFlags: 0
@@ -21689,8 +21689,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 18, y: 25, z: 18}
-  m_Center: {x: 0, y: 14, z: 0}
+  m_Size: {x: 30, y: 50, z: 30}
+  m_Center: {x: 0, y: 25, z: 0}
 --- !u!4 &1141444402
 Transform:
   m_ObjectHideFlags: 0
@@ -28401,6 +28401,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 224167410033495172, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa7d9039425e6a14d8dd22e2a1ecf726, type: 2}
   m_IsPrefabParent: 0
@@ -32134,8 +32139,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 18, y: 25, z: 18}
-  m_Center: {x: 0, y: 14, z: 0}
+  m_Size: {x: 30, y: 50, z: 30}
+  m_Center: {x: 0, y: 25, z: 0}
 --- !u!4 &1657079122
 Transform:
   m_ObjectHideFlags: 0

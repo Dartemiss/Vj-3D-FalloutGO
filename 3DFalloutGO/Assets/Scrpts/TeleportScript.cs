@@ -6,7 +6,7 @@ public class TeleportScript : MonoBehaviour {
 	public Transform mainCharacter;
 	public Transform whereToGo;
 	float timer = 0.0f;
-	float timerMax = 3.0f;
+	float timerMax = 1.5f;
 	public float eulerRotation = 0.0f;
 	// Use this for initialization
 	void Start () {

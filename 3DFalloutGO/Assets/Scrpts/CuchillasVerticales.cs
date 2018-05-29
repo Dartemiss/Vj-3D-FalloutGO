@@ -76,7 +76,7 @@ public class CuchillasVerticales : MonoBehaviour {
 		if (moving)
 			moveSerra ();
 
-		if (Vector3.Distance (transform.position, mainCharacter.position) < 1.0f) {
+		if (Vector3.Distance (transform.position, mainCharacter.position) < 1.5f) {
 			SceneManager.LoadScene(2);
 		}
 	}

@@ -28,12 +28,14 @@ public class ComportamentPerseguidor : MonoBehaviour {
 	string currentWhere;
 	string firstWhere;
 	string secondWhere;
+	Vector3 predatorAux;
 	// Use this for initialization
 	void Start () {
 		firstPos = firstDelante.position;
 		secondPos = secondDelante.position;
 		firstWhere = firstDelante.tag;
 		secondWhere = secondDelante.tag;
+		//predatorAux = new Vector3 (transform.position.x, 0.51f, transform.position.z);
 	}
 	
 	// Update is called once per frame

@@ -13,7 +13,7 @@ public class GetAmmo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Vector3.Distance (transform.position, mainCharacter.transform.position) < 1.0f) {
-			Destroy (gameObject, 0.5f);
+			Destroy (gameObject, 0.25f);
 		}
 	}
 }
