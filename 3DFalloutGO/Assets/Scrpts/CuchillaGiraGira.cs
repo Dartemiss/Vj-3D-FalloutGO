@@ -14,7 +14,7 @@ public class CuchillaGiraGira : MonoBehaviour {
 	int direction = 0;
 	int posneg = 1;
 	public int numberPlats;
-
+	bool GODMODE = false;
 	// Use this for initialization
 	void Start () {
 		
@@ -22,6 +22,9 @@ public class CuchillaGiraGira : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(Input.GetKeyDown("g")){
+			GODMODE = !GODMODE;
+		}
 		if (Input.GetMouseButtonDown (0)) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
@@ -53,7 +56,8 @@ public class CuchillaGiraGira : MonoBehaviour {
 			moveSerra ();
 
 		if (Vector3.Distance (transform.position, mainCharacter.position) < 1.0f) {
-			SceneManager.LoadScene(2);
+			if(!GODMODE)
+				SceneManager.LoadScene(2);
 		}
 	}
 

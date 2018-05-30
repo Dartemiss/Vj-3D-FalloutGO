@@ -34,6 +34,8 @@ public class GamplayScript : MonoBehaviour {
     public GameObject imageBobbNoAcq;
     public GameObject imageBobbYesAcq;
 
+	bool GODMODE = false;
+
     // Use this for initialization
     void Start () {
 		m_Animator = GetComponentInChildren<Animator>();
@@ -45,6 +47,9 @@ public class GamplayScript : MonoBehaviour {
 		//myCamera.transform.position = transform.position + offsetCam;
 		if(Input.GetKeyDown("t")){
 			transform.position = new Vector3 (tp.x, tp.y + 0.51f, tp.z);
+		}
+		if(Input.GetKeyDown("g")){
+			GODMODE = !GODMODE;
 		}
 
 		if (Input.GetMouseButtonDown (0) && !currently_moving) {

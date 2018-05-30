@@ -17,6 +17,7 @@ public class ComportamentPatronEnemies : MonoBehaviour {
 	int posneg = 1;
 	public int numberPlats;
 	public int mylvl;
+	bool GODMODE = false;
 	// Use this for initialization
 	void Start () {
 		
@@ -24,6 +25,9 @@ public class ComportamentPatronEnemies : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(Input.GetKeyDown("g")){
+			GODMODE = !GODMODE;
+		}
 		if (Input.GetMouseButtonDown (0)) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
@@ -64,7 +68,8 @@ public class ComportamentPatronEnemies : MonoBehaviour {
 		if (moving)
 			moveEnemy ();
 		if (Vector3.Distance (transform.position, mainCharacter.position) < 1.0f) {
-			SceneManager.LoadScene(mylvl);
+			if(!GODMODE)
+				SceneManager.LoadScene(mylvl);
 		}
 	}
 

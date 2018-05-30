@@ -29,6 +29,7 @@ public class ComportamentPerseguidor : MonoBehaviour {
 	string firstWhere;
 	string secondWhere;
 	Vector3 predatorAux;
+	bool GODMODE = false;
 	// Use this for initialization
 	void Start () {
 		firstPos = firstDelante.position;
@@ -40,6 +41,9 @@ public class ComportamentPerseguidor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(Input.GetKeyDown("g")){
+			GODMODE = !GODMODE;
+		}
 		if (!active)
 			checkPJ ();
 		else {
@@ -63,7 +67,8 @@ public class ComportamentPerseguidor : MonoBehaviour {
 			}
 		}
 		if (Vector3.Distance (transform.position, mainCharacter.position) < 1.0f) {
-			SceneManager.LoadScene(numLvl);
+			if(!GODMODE)
+				SceneManager.LoadScene(numLvl);
 		}
 	}
 

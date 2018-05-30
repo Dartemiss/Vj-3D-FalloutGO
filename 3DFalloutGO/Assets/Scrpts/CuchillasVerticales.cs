@@ -19,6 +19,7 @@ public class CuchillasVerticales : MonoBehaviour {
 	public int ygir;
 	public int zgir;
 	public bool lado = false;
+	bool GODMODE = false;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +28,9 @@ public class CuchillasVerticales : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if(Input.GetKeyDown("g")){
+			GODMODE = !GODMODE;
+		}
 		if (Input.GetMouseButtonDown (0)) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
@@ -77,7 +81,8 @@ public class CuchillasVerticales : MonoBehaviour {
 			moveSerra ();
 
 		if (Vector3.Distance (transform.position, mainCharacter.position) < 1.5f) {
-			SceneManager.LoadScene(2);
+			if(!GODMODE)
+				SceneManager.LoadScene(2);
 		}
 	}
 
@@ -89,7 +94,7 @@ public class CuchillasVerticales : MonoBehaviour {
 		} else if (direction == 2) {
 			transform.Translate (0, 0, 0.1f);
 		}
-		if (Vector3.Distance (transform.position, currentPos) < 0.75f) {
+		if (Vector3.Distance (transform.position, currentPos) < 0.85f) {
 			moving = false;
 			whereimgoing = whereimgoing + posneg;
 			if (whereimgoing == -1) {
