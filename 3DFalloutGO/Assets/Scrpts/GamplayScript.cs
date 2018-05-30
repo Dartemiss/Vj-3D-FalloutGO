@@ -95,12 +95,17 @@ public class GamplayScript : MonoBehaviour {
 								moving = true;
 								currently_moving = true;
 							} else {
-								if (transform.position.y < newPos.y) {
-									jumpup = true;
-									m_Animator.Play ("ClimbUpFinal");
-									up = true;
-								} else
-									jumpdown = true;
+                                if (transform.position.y < newPos.y)
+                                {
+                                    jumpup = true;
+                                    m_Animator.Play("ClimbUpFinal");
+                                    up = true;
+                                }
+                                else
+                                {
+                                    jumpdown = true;
+                                    m_Animator.Play("ClimbDownFloor");
+                                }
 							}
 							suelo = true;
 							currently_moving = true;
@@ -141,7 +146,12 @@ public class GamplayScript : MonoBehaviour {
 			jumpupEntitiesWall ();
 		} else if (jumpFloorToVertical) {
 			floorToVertical ();
-		}
+            if (availableAnimation)
+            {
+                m_Animator.Play("Slide");
+                availableAnimation = false;
+            }
+        }
 	}
 
 	void moveEntitiesField () {
@@ -222,7 +232,14 @@ public class GamplayScript : MonoBehaviour {
             }
         }
         else if (direction == 3)
+        {
             transform.Translate(new Vector3(0, -0.1f, 0));
+            if (availableAnimation)
+            {
+                m_Animator.Play("ClimbDown");
+                availableAnimation = false;
+            }
+        }
 		if (direction == 3 || direction == 2) {
 			if (Vector3.Distance (new Vector3 (0.0f, transform.position.y, 0.0f), new Vector3 (0.0f, newPos.y, 0.0f)) < 0.1f) {
 				escalar = false;

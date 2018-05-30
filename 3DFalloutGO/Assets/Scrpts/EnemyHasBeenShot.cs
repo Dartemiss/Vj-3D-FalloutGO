@@ -19,13 +19,13 @@ public class EnemyHasBeenShot : MonoBehaviour {
 	void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.tag == "my_shot") {
-			Destroy (collision.gameObject, 1);
+			Destroy (collision.gameObject, 0.5f);
             var particles = Instantiate(deathEffect, transform);
-            Destroy(particles.gameObject, 1);
+            Destroy(particles.gameObject, 0.5f);
 			//GameObject aux = gameObject.transform.GetChild (0).gameObject;
 			GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
             GetComponent<BoxCollider>().enabled = false;
-            Destroy (gameObject, 1);
+            Destroy (gameObject, 0.5f);
 
         }
 	}
