@@ -26,22 +26,22 @@ public class GamplayScript : MonoBehaviour {
 	Vector3 offsetCam = new Vector3 (-1.0f,12.0f,-18.0f);
 
 	Animator m_Animator;
-    public Text ammoText;
-    public GameObject acquireBobblehead;
-    public Text bobbleRecountText;
-    int bobbleRecount = 0;
-    bool availableAnimation = true;
-    public GameObject imageBobbNoAcq;
-    public GameObject imageBobbYesAcq;
+	public Text ammoText;
+	public GameObject acquireBobblehead;
+	public Text bobbleRecountText;
+	int bobbleRecount = 0;
+	bool availableAnimation = true;
+	public GameObject imageBobbNoAcq;
+	public GameObject imageBobbYesAcq;
 	Transform vaultBoy;
 	bool first = true;
 
 	bool GODMODE = false;
 
-    // Use this for initialization
-    void Start () {
+	// Use this for initialization
+	void Start () {
 		m_Animator = GetComponentInChildren<Animator>();
-        updateUIBullets();
+		updateUIBullets();
 	}
 
 	// Update is called once per frame
@@ -59,12 +59,12 @@ public class GamplayScript : MonoBehaviour {
 
 			if( Physics.Raycast( ray, out hit, 100 ) )
 			{
-                availableAnimation = true;
+				availableAnimation = true;
 				bool isshoting = false;
 				newPos = hit.transform.position;
 				if (0 < numBullets && hit.transform.gameObject.tag == "enemy" && 5.0f < Vector3.Distance (transform.position, newPos)) {
 					if(Mathf.Abs(newPos.z - transform.position.z)< 1.0f || Mathf.Abs(newPos.x - transform.position.x)< 1.0f )
-					realShotTime ();
+						realShotTime ();
 					isshoting = true;
 				}
 
@@ -96,6 +96,7 @@ public class GamplayScript : MonoBehaviour {
 								moving = true;
 								currently_moving = true;
 							} else {
+
 								if (transform.position.y < newPos.y) {
 									jumpup = true;
 									m_Animator.Play ("ClimbUpFinal");
@@ -107,6 +108,19 @@ public class GamplayScript : MonoBehaviour {
 									vaultBoy.position = new Vector3 (vaultBoy.position.x, vaultBoy.position.y + 7.0f/5.0f, vaultBoy.position.z);
 									first = true;
 								}
+
+								if (transform.position.y < newPos.y)
+								{
+									jumpup = true;
+									m_Animator.Play("ClimbUpFinal");
+									up = true;
+								}
+								else
+								{
+									jumpdown = true;
+									m_Animator.Play("ClimbDownFloor");
+								}
+
 							}
 							suelo = true;
 							currently_moving = true;
@@ -119,21 +133,21 @@ public class GamplayScript : MonoBehaviour {
 						}
 					}
 				}
-                if (hit.transform.tag == "collectible")
-                {
-                    acquireBobblehead.SetActive(true);
-                    AudioSource audioBobble = hit.transform.gameObject.GetComponent<AudioSource>();
-                    audioBobble.Play();
-                    StartCoroutine(bobbleDisappear(hit));
-                    ++bobbleRecount;
-                    bobbleRecountText.text = bobbleRecount.ToString() + " Bobbleheads";
-                    if (bobbleRecount == 1)
-                    {
-                        imageBobbNoAcq.SetActive(false);
-                        imageBobbYesAcq.SetActive(true);
-                    }
-                }
-            }
+				if (hit.transform.tag == "collectible")
+				{
+					acquireBobblehead.SetActive(true);
+					AudioSource audioBobble = hit.transform.gameObject.GetComponent<AudioSource>();
+					audioBobble.Play();
+					StartCoroutine(bobbleDisappear(hit));
+					++bobbleRecount;
+					bobbleRecountText.text = bobbleRecount.ToString() + " Bobbleheads";
+					if (bobbleRecount == 1)
+					{
+						imageBobbNoAcq.SetActive(false);
+						imageBobbYesAcq.SetActive(true);
+					}
+				}
+			}
 		}
 		if (moving) {
 			moveEntitiesField ();
@@ -147,6 +161,11 @@ public class GamplayScript : MonoBehaviour {
 			jumpupEntitiesWall ();
 		} else if (jumpFloorToVertical) {
 			floorToVertical ();
+			if (availableAnimation)
+			{
+				m_Animator.Play("Slide");
+				availableAnimation = false;
+			}
 		}
 	}
 
@@ -204,36 +223,43 @@ public class GamplayScript : MonoBehaviour {
 
 	void moveEntitiesWall () {
 		int direction = goUpDownRightLeft ();
-        //Debug.Log (direction);
-        if (direction == 0)
-        {
-            transform.Translate(new Vector3(-0.1f, 0, 0));
-            if (availableAnimation)
-            {
-                m_Animator.Play("ClimbLeft");
-                availableAnimation = false;
-            }
-        }
-        else if (direction == 1)
-        {
-            transform.Translate(new Vector3(0.1f, 0, 0));
-            if (availableAnimation)
-            {
-                m_Animator.Play("ClimbRight");
-                availableAnimation = false;
-            }
-        }
-        else if (direction == 2)
-        {
-            transform.Translate(new Vector3(0, 0.1f, 0));
-            if (availableAnimation)
-            {
-                m_Animator.Play("ClimbMiddle");
-                availableAnimation = false;
-            }
-        }
-        else if (direction == 3)
-            transform.Translate(new Vector3(0, -0.1f, 0));
+		//Debug.Log (direction);
+		if (direction == 0)
+		{
+			transform.Translate(new Vector3(-0.1f, 0, 0));
+			if (availableAnimation)
+			{
+				m_Animator.Play("ClimbLeft");
+				availableAnimation = false;
+			}
+		}
+		else if (direction == 1)
+		{
+			transform.Translate(new Vector3(0.1f, 0, 0));
+			if (availableAnimation)
+			{
+				m_Animator.Play("ClimbRight");
+				availableAnimation = false;
+			}
+		}
+		else if (direction == 2)
+		{
+			transform.Translate(new Vector3(0, 0.1f, 0));
+			if (availableAnimation)
+			{
+				m_Animator.Play("ClimbMiddle");
+				availableAnimation = false;
+			}
+		}
+		else if (direction == 3)
+		{
+			transform.Translate(new Vector3(0, -0.1f, 0));
+			if (availableAnimation)
+			{
+				m_Animator.Play("ClimbDown");
+				availableAnimation = false;
+			}
+		}
 		if (direction == 3 || direction == 2) {
 			if (Vector3.Distance (new Vector3 (0.0f, transform.position.y, 0.0f), new Vector3 (0.0f, newPos.y, 0.0f)) < 0.1f) {
 				escalar = false;
@@ -304,13 +330,13 @@ public class GamplayScript : MonoBehaviour {
 				else
 					return 0;
 			}
-		
+
 		} else{ 
 			if (actualPos.y < newPos.y)
 				return 2;
 			else
 				return 3;
-	
+
 		}
 	}
 
@@ -326,11 +352,11 @@ public class GamplayScript : MonoBehaviour {
 
 	}
 
-    public IEnumerator bobbleDisappear(RaycastHit hit)
-    {
-        yield return new WaitForSeconds(1.0f);
-        Destroy(hit.transform.gameObject);
-    }
+	public IEnumerator bobbleDisappear(RaycastHit hit)
+	{
+		yield return new WaitForSeconds(1.0f);
+		Destroy(hit.transform.gameObject);
+	}
 
 
 	void realShotTime(){
@@ -345,21 +371,21 @@ public class GamplayScript : MonoBehaviour {
 					dir = Vector3.right;
 			}
 			else if (Mathf.Abs (newPos.x - transform.position.x) < 1.0f){
-					if (newPos.z < transform.position.z)
-						dir = Vector3.back;
-					else
-						dir = Vector3.forward;
+				if (newPos.z < transform.position.z)
+					dir = Vector3.back;
+				else
+					dir = Vector3.forward;
 			}
 			m_Animator.Play("Shoot");
 			StartCoroutine(shootingDelay(dir));
-            //--numBullets;
-            updateUIBullets();
+			//--numBullets;
+			updateUIBullets();
 		}
-			
+
 	}
 
-    void updateUIBullets()
-    {
-        ammoText.text = "Ammo: " + numBullets.ToString();
-    }
+	void updateUIBullets()
+	{
+		ammoText.text = "Ammo: " + numBullets.ToString();
+	}
 }
