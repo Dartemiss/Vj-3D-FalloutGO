@@ -112,7 +112,6 @@ GameObject:
   - component: {fileID: 65670211109063344}
   - component: {fileID: 114138236498395048}
   - component: {fileID: 114153339872499122}
-  - component: {fileID: 114752307776139214}
   - component: {fileID: 82312232598807760}
   m_Layer: 0
   m_Name: mainCharacter 1
@@ -1211,17 +1210,6 @@ MonoBehaviour:
   bobbleRecountText: {fileID: 0}
   imageBobbNoAcq: {fileID: 0}
   imageBobbYesAcq: {fileID: 0}
---- !u!114 &114752307776139214
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1343461763561634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4a50350e1498414ea2eabeedc465147, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!137 &137752968576199210
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

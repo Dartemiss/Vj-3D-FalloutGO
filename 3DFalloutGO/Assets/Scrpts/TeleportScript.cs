@@ -8,6 +8,7 @@ public class TeleportScript : MonoBehaviour {
 	float timer = 0.0f;
 	float timerMax = 1.5f;
 	public float eulerRotation = 0.0f;
+    bool soundplayed = false;
 	// Use this for initialization
 	void Start () {
 		
@@ -17,9 +18,16 @@ public class TeleportScript : MonoBehaviour {
 	void Update () {
 		if (Vector3.Distance (mainCharacter.transform.position, transform.position) < 1.0f) {
 			timer += Time.deltaTime;
+            if (!soundplayed)
+            {
+                AudioSource audio = GetComponent<AudioSource>();
+                audio.Play();
+                soundplayed = true;
+            }
 			if (timerMax < timer) {
 				mainCharacter.transform.position = new Vector3 (whereToGo.position.x, whereToGo.position.y + 0.51f, whereToGo.position.z);
 				mainCharacter.transform.Rotate (0, eulerRotation, 0);
+                
 			}
 		}
 	}
