@@ -33,6 +33,8 @@ public class GamplayScript : MonoBehaviour {
     bool availableAnimation = true;
     public GameObject imageBobbNoAcq;
     public GameObject imageBobbYesAcq;
+	Transform vaultBoy;
+	bool first = true;
 
 	bool GODMODE = false;
 
@@ -51,7 +53,6 @@ public class GamplayScript : MonoBehaviour {
 		if(Input.GetKeyDown("g")){
 			GODMODE = !GODMODE;
 		}
-
 		if (Input.GetMouseButtonDown (0) && !currently_moving) {
 			Ray ray = Camera.main.ScreenPointToRay( Input.mousePosition );
 			RaycastHit hit;
@@ -101,6 +102,11 @@ public class GamplayScript : MonoBehaviour {
 									up = true;
 								} else
 									jumpdown = true;
+								if (!first) {
+									vaultBoy = gameObject.transform.GetChild (0);
+									vaultBoy.position = new Vector3 (vaultBoy.position.x, vaultBoy.position.y + 7.0f/5.0f, vaultBoy.position.z);
+									first = true;
+								}
 							}
 							suelo = true;
 							currently_moving = true;
@@ -161,6 +167,11 @@ public class GamplayScript : MonoBehaviour {
 			jumping = false;
 			aux = 0.0f;
 			currently_moving = false;
+			if (first) {
+				vaultBoy = gameObject.transform.GetChild (0);
+				vaultBoy.position = new Vector3 (vaultBoy.position.x, vaultBoy.position.y - 7.0f/5.0f, vaultBoy.position.z);
+				first = false;
+			}
 		}
 	}
 
@@ -258,6 +269,11 @@ public class GamplayScript : MonoBehaviour {
 		} else {
 			jumpFloorToVertical = false;
 			currently_moving = false;
+			if (first) {
+				vaultBoy = gameObject.transform.GetChild (0);
+				vaultBoy.position = new Vector3 (vaultBoy.position.x, vaultBoy.position.y - 7.0f/5.0f, vaultBoy.position.z);
+				first = false;
+			}
 		}
 	}
 
