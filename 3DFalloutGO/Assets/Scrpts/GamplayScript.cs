@@ -21,7 +21,6 @@ public class GamplayScript : MonoBehaviour {
 	bool zz,yy = false;
 	bool up;
 	int numBullets = 0;
-	public Camera myCamera;
 	public Vector3 tp = new Vector3(4.45f,28.1f,8.0f);
 	Vector3 offsetCam = new Vector3 (-1.0f,12.0f,-18.0f);
 
@@ -33,7 +32,11 @@ public class GamplayScript : MonoBehaviour {
 	bool availableAnimation = true;
 	public GameObject imageBobbNoAcq;
 	public GameObject imageBobbYesAcq;
-	Transform vaultBoy;
+    public GameObject imageBobbNoAcq2;
+    public GameObject imageBobbYesAcq2;
+    public GameObject imageBobbNoAcq3;
+    public GameObject imageBobbYesAcq3;
+    Transform vaultBoy;
 	bool first = true;
 
 	bool GODMODE = false;
@@ -46,16 +49,22 @@ public class GamplayScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		//myCamera.transform.position = transform.position + offsetCam;
 		if(Input.GetKeyDown("t")){
 			transform.position = new Vector3 (tp.x, tp.y + 0.51f, tp.z);
 		}
 		if(Input.GetKeyDown("g")){
 			GODMODE = !GODMODE;
 			if (GODMODE)
-				numBullets = 50;
-			else
-				numBullets = 0;
+            {
+                numBullets = 50;
+                updateUIBullets();
+            }
+				
+			else{
+                numBullets = 0;
+                updateUIBullets();
+            }
+				
 		}
 		if (Input.GetMouseButtonDown (0) && !currently_moving) {
 			Ray ray = Camera.main.ScreenPointToRay( Input.mousePosition );
@@ -151,7 +160,17 @@ public class GamplayScript : MonoBehaviour {
 						imageBobbNoAcq.SetActive(false);
 						imageBobbYesAcq.SetActive(true);
 					}
-				}
+                    if (bobbleRecount == 2)
+                    {
+                        imageBobbNoAcq2.SetActive(false);
+                        imageBobbYesAcq2.SetActive(true);
+                    }
+                    if (bobbleRecount == 3)
+                    {
+                        imageBobbNoAcq3.SetActive(false);
+                        imageBobbYesAcq3.SetActive(true);
+                    }
+                }
 			}
 		}
 		if (moving) {
