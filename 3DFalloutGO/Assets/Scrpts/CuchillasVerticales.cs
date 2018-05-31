@@ -20,6 +20,7 @@ public class CuchillasVerticales : MonoBehaviour {
 	public int zgir;
 	public bool lado = false;
 	bool GODMODE = false;
+	public int numLvl;
 
 	// Use this for initialization
 	void Start () {
@@ -82,7 +83,7 @@ public class CuchillasVerticales : MonoBehaviour {
 
 		if (Vector3.Distance (transform.position, mainCharacter.position) < 1.5f) {
 			if(!GODMODE)
-				SceneManager.LoadScene(2);
+				SceneManager.LoadScene(numLvl);
 		}
 	}
 

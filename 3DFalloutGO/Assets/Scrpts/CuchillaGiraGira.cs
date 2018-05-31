@@ -15,6 +15,7 @@ public class CuchillaGiraGira : MonoBehaviour {
 	int posneg = 1;
 	public int numberPlats;
 	bool GODMODE = false;
+	public int numLvl;
 	// Use this for initialization
 	void Start () {
 		
@@ -57,7 +58,7 @@ public class CuchillaGiraGira : MonoBehaviour {
 
 		if (Vector3.Distance (transform.position, mainCharacter.position) < 1.0f) {
 			if(!GODMODE)
-				SceneManager.LoadScene(2);
+				SceneManager.LoadScene(numLvl);
 		}
 	}
 

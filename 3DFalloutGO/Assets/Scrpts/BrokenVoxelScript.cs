@@ -28,7 +28,7 @@ public class BrokenVoxelScript : MonoBehaviour {
 			mainCharacter.transform.Translate (0, -0.2f, 0);
 			aux = aux + 0.1f;
 			if (2.5f<aux) {
-				SceneManager.LoadScene(1);
+				SceneManager.LoadScene(2);
 			}
 		}
 	}
