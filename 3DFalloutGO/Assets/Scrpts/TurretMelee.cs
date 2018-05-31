@@ -13,6 +13,8 @@ public class TurretMelee : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Vector3.Distance (mainCharacter.transform.position, transform.position) < 1.2f) {
+            var audio = mainCharacter.gameObject.GetComponents<AudioSource>();
+            audio[2].Play();
 			Destroy (gameObject);
 		}
 	}

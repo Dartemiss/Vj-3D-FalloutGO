@@ -25,6 +25,8 @@ public class EnemyHasBeenShot : MonoBehaviour {
 			//GameObject aux = gameObject.transform.GetChild (0).gameObject;
 			GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
             GetComponent<BoxCollider>().enabled = false;
+            AudioSource audio = GetComponent<AudioSource>();
+            audio.Play();
             Destroy (gameObject, 0.5f);
 
         }

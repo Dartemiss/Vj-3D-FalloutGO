@@ -127,7 +127,8 @@ public class GamplayScript : MonoBehaviour {
 							transform.LookAt (new Vector3 (newPos.x, transform.position.y, newPos.z));
 							if (hit.transform.gameObject.tag == "floor_ammo") {
 								numBullets++;
-								hit.transform.gameObject.tag = "Floor";
+                                StartCoroutine(ammoSound());
+                                hit.transform.gameObject.tag = "Floor";
 								updateUIBullets ();
 							}
 						}
@@ -344,8 +345,8 @@ public class GamplayScript : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(0.8f);
 
-		AudioSource audioS = GetComponent<AudioSource>();
-		audioS.Play();
+        var audioS = GetComponents<AudioSource>();
+		audioS[0].Play();
 		Vector3 alturaGun = new Vector3 (0, 1.5f, 0);
 		GameObject obj = Instantiate(shot, transform.position + dir + alturaGun, shot.transform.rotation);
 		obj.GetComponent<Rigidbody>().velocity = 8.0f * dir;
@@ -357,9 +358,16 @@ public class GamplayScript : MonoBehaviour {
 		yield return new WaitForSeconds(1.0f);
 		Destroy(hit.transform.gameObject);
 	}
+    
 
+    public IEnumerator ammoSound()
+    {
+        yield return new WaitForSeconds(0.3f);
+        var audioS = GetComponents<AudioSource>();
+        audioS[1].Play();
+    }
 
-	void realShotTime(){
+    void realShotTime(){
 		transform.LookAt (new Vector3 (newPos.x, transform.position.y, newPos.z));
 		if (Mathf.Abs (newPos.y - transform.position.y) < 1.0f) {
 			//0 forward, 1 back, 2 right 3 left

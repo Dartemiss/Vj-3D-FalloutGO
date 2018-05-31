@@ -28,7 +28,9 @@ public class ComportamentPalanca : MonoBehaviour {
 				if (Vector3.Distance (mainCharacter.transform.position, newPos) < 2.0f) {
 					if (newPos == transform.position) {
 						active = true;
-					}
+                        AudioSource audio = GetComponent<AudioSource>();
+                        audio.Play();
+                    }
 				}
 			}
 		}
