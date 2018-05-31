@@ -7,6 +7,7 @@ public class PlayerBeenShot : MonoBehaviour {
 
 	public int lvl = 0;
 	bool GODMODE = false;
+    public GameObject losePanel;
 	// Use this for initialization
 	void Start () {
 		
@@ -23,9 +24,12 @@ public class PlayerBeenShot : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "shot") {
 			Destroy (collision.gameObject);
-			if(!GODMODE)
-				SceneManager.LoadScene(lvl);
+            if (!GODMODE)
+            {
+                GetComponent<GamplayScript>().enabled = false;
+                losePanel.SetActive(true);
+            }
 
-		}
+        }
 	}
 }

@@ -16,6 +16,7 @@ public class CuchillaGiraGira : MonoBehaviour {
 	public int numberPlats;
 	bool GODMODE = false;
 	public int numLvl;
+    public GameObject losePanel;
 	// Use this for initialization
 	void Start () {
 		
@@ -57,9 +58,12 @@ public class CuchillaGiraGira : MonoBehaviour {
 			moveSerra ();
 
 		if (Vector3.Distance (transform.position, mainCharacter.position) < 1.0f) {
-			if(!GODMODE)
-				SceneManager.LoadScene(numLvl);
-		}
+            if (!GODMODE)
+            {
+                mainCharacter.GetComponent<GamplayScript>().enabled = false;
+                losePanel.SetActive(true);
+            }
+        }
 	}
 
 	void moveSerra(){

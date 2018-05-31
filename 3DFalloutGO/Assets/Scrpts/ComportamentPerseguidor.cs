@@ -30,6 +30,7 @@ public class ComportamentPerseguidor : MonoBehaviour {
 	string secondWhere;
 	Vector3 predatorAux;
 	bool GODMODE = false;
+    public GameObject losePanel;
 	// Use this for initialization
 	void Start () {
 		firstPos = firstDelante.position;
@@ -67,8 +68,10 @@ public class ComportamentPerseguidor : MonoBehaviour {
 			}
 		}
 		if (Vector3.Distance (transform.position, mainCharacter.position) < 1.0f) {
-			if(!GODMODE)
-				SceneManager.LoadScene(numLvl);
+            if (!GODMODE)
+            {
+                losePanel.SetActive(true);
+            }
 		}
 	}
 

@@ -7,6 +7,7 @@ public class RadiactiveOrbe : MonoBehaviour {
 
 	public Transform mainCharacter;
 	bool GODMODE = false;
+    public GameObject losePanel;
 	// Use this for initialization
 	void Start () {
 		
@@ -20,8 +21,11 @@ public class RadiactiveOrbe : MonoBehaviour {
 		Vector2 aux1 = new Vector2 (mainCharacter.transform.position.x, mainCharacter.transform.position.z);
 		Vector2 aux2 = new Vector2 (transform.position.x, transform.position.z);
 		if (Vector2.Distance (aux1, aux2) < 0.5f) {
-			if(!GODMODE)
-				SceneManager.LoadScene(3);
-		}
+            if (!GODMODE)
+            {
+                mainCharacter.GetComponent<GamplayScript>().enabled = false;
+                losePanel.SetActive(true);
+            }
+        }
 	}
 }

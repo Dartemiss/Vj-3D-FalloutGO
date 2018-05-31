@@ -18,6 +18,7 @@ public class ComportamentPatronEnemies : MonoBehaviour {
 	public int numberPlats;
 	public int mylvl;
 	bool GODMODE = false;
+    public GameObject losePanel;
 	// Use this for initialization
 	void Start () {
 		
@@ -68,9 +69,12 @@ public class ComportamentPatronEnemies : MonoBehaviour {
 		if (moving)
 			moveEnemy ();
 		if (Vector3.Distance (transform.position, mainCharacter.position) < 1.0f) {
-			if(!GODMODE)
-				SceneManager.LoadScene(mylvl);
-		}
+            if (!GODMODE)
+            {
+                mainCharacter.GetComponent<GamplayScript>().enabled = false;
+                losePanel.SetActive(true);
+            }
+        }
 	}
 
 

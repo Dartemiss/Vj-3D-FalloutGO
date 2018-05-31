@@ -445,6 +445,7 @@ MonoBehaviour:
   mainCharacter: {fileID: 528847718}
   numberPlats: 6
   numLvl: 6
+  losePanel: {fileID: 1730289237}
 --- !u!65 &41588760
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -862,6 +863,7 @@ MonoBehaviour:
   direction: 2
   numberPlats: 5
   mylvl: 6
+  losePanel: {fileID: 1730289237}
 --- !u!4 &77012819
 Transform:
   m_ObjectHideFlags: 0
@@ -8080,6 +8082,7 @@ MonoBehaviour:
   secondDelante: {fileID: 1287734293}
   numLvl: 6
   tp: {fileID: 1951753534}
+  losePanel: {fileID: 1730289237}
 --- !u!4 &527807478
 Transform:
   m_ObjectHideFlags: 0
@@ -9896,6 +9899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCharacter: {fileID: 528847718}
+  losePanel: {fileID: 1730289237}
 --- !u!1001 &670614620
 Prefab:
   m_ObjectHideFlags: 0
@@ -10242,6 +10246,7 @@ MonoBehaviour:
   direction: 2
   numberPlats: 5
   mylvl: 6
+  losePanel: {fileID: 1730289237}
 --- !u!4 &683506153
 Transform:
   m_ObjectHideFlags: 0
@@ -12423,6 +12428,7 @@ MonoBehaviour:
   secondDelante: {fileID: 1217491098}
   numLvl: 6
   tp: {fileID: 1951753534}
+  losePanel: {fileID: 1730289237}
 --- !u!4 &821956150
 Transform:
   m_ObjectHideFlags: 0
@@ -16628,6 +16634,7 @@ MonoBehaviour:
   direction: 2
   numberPlats: 5
   mylvl: 6
+  losePanel: {fileID: 1730289237}
 --- !u!4 &1110352188
 Transform:
   m_ObjectHideFlags: 0
@@ -22176,6 +22183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCharacter: {fileID: 528847718}
+  losePanel: {fileID: 1730289237}
 --- !u!4 &1458763903 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4645539435154002, guid: b8b27c7be55145d45964a4e370986a36,
@@ -23295,6 +23303,7 @@ MonoBehaviour:
   direction: 2
   numberPlats: 5
   mylvl: 6
+  losePanel: {fileID: 1730289237}
 --- !u!4 &1532259573
 Transform:
   m_ObjectHideFlags: 0
@@ -26511,12 +26520,12 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 964452521}
-    - target: {fileID: 114974023067046720, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
+    - target: {fileID: 114979843011202802, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2004753855}
-    - target: {fileID: 114979843011202802, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
+    - target: {fileID: 114974023067046720, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -26526,39 +26535,9 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 82877340527773392, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
-        type: 2}
-      propertyPath: m_Volume
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 114774314265505792, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953085973091562, guid: aa7d9039425e6a14d8dd22e2a1ecf726, type: 2}
+    - target: {fileID: 1369316572873618, guid: aa7d9039425e6a14d8dd22e2a1ecf726, type: 2}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114016800238433646, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114769260540500254, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 0.5568628
-      objectReference: {fileID: 0}
-    - target: {fileID: 82877340527773392, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
-        type: 2}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 9d8b207a93e1bb5469ee29558764cebc, type: 3}
-    - target: {fileID: 82877340527773392, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
-        type: 2}
-      propertyPath: Loop
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa7d9039425e6a14d8dd22e2a1ecf726, type: 2}
@@ -26566,6 +26545,11 @@ Prefab:
 --- !u!1 &1730289236 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1369316572873618, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
+    type: 2}
+  m_PrefabInternal: {fileID: 1730289235}
+--- !u!1 &1730289237 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1158088729245644, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
     type: 2}
   m_PrefabInternal: {fileID: 1730289235}
 --- !u!1 &1736852485 stripped
@@ -28507,6 +28491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCharacter: {fileID: 528847718}
+  losePanel: {fileID: 1730289237}
 --- !u!114 &1856825366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30091,6 +30076,7 @@ MonoBehaviour:
   direction: 2
   numberPlats: 5
   mylvl: 6
+  losePanel: {fileID: 1730289237}
 --- !u!4 &1966736440
 Transform:
   m_ObjectHideFlags: 0
@@ -31945,6 +31931,7 @@ MonoBehaviour:
   direction: 2
   numberPlats: 5
   mylvl: 6
+  losePanel: {fileID: 1730289237}
 --- !u!4 &2080127083
 Transform:
   m_ObjectHideFlags: 0

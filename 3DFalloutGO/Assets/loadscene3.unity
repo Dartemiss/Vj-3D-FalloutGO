@@ -608,7 +608,7 @@ Prefab:
         the purification systems.
 
 
-        And beware af the cazadores, they will follow you if they spot you. And they''re
+        And beware of the cazadores, they will follow you if they spot you. And they''re
         a pain in the a**.'
       objectReference: {fileID: 0}
     - target: {fileID: 224462872950912174, guid: ec860b70d683f9c4eab2142298e70090,
