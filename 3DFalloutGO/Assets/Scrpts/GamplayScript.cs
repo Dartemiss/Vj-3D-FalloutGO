@@ -20,7 +20,7 @@ public class GamplayScript : MonoBehaviour {
 	bool jumpFloorToVertical = false;
 	bool zz,yy = false;
 	bool up;
-	int numBullets = 5;
+	int numBullets = 0;
 	public Camera myCamera;
 	public Vector3 tp = new Vector3(4.45f,28.1f,8.0f);
 	Vector3 offsetCam = new Vector3 (-1.0f,12.0f,-18.0f);
@@ -386,7 +386,7 @@ public class GamplayScript : MonoBehaviour {
 			}
 			m_Animator.Play("Shoot");
 			StartCoroutine(shootingDelay(dir));
-			//--numBullets;
+			--numBullets;
 			updateUIBullets();
 		}
 
