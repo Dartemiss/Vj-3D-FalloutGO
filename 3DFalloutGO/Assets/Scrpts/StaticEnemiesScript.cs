@@ -40,7 +40,7 @@ public class StaticEnemiesScript : MonoBehaviour {
 		float dotProd = Vector3.Dot (dirFromAtoB, enemy.forward);
 		if (dotProd > 0.9 && !dead) {
 			if(Vector3.Distance (mainCharacter.transform.position, enemy.position) <= 4.1f){
-				//dead = true;
+				dead = true;
 				if (enemy.transform.rotation.eulerAngles.y == 270) {
 					GameObject obj = Instantiate (shot, enemy.transform.position + new Vector3(0,1.5f,0) + Vector3.left, shot.transform.rotation);
 					obj.GetComponent<Rigidbody> ().velocity = speed * Vector3.left;

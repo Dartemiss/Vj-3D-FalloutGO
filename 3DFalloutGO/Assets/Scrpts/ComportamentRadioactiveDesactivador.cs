@@ -20,7 +20,7 @@ public class ComportamentRadioactiveDesactivador : MonoBehaviour {
 
 			if (Physics.Raycast (ray, out hit, 100)) {
 				newPos = hit.transform.position;
-				if (Vector3.Distance (mainCharacter.transform.position, newPos) < 4.0f) {
+				if (Vector3.Distance (mainCharacter.transform.position, newPos) < 2.0f) {
 					if (newPos == transform.position) {
 						active = true;
                         AudioSource audio = GetComponent<AudioSource>();
