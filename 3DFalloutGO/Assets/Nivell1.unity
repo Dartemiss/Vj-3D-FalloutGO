@@ -32907,7 +32907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eedb07e20f9d5234ebcecedd1cad5188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  howmanyArtifact: 0
 --- !u!4 &1486171511
 Transform:
   m_ObjectHideFlags: 0
@@ -43814,6 +43813,11 @@ Prefab:
         type: 2}
       propertyPath: m_RootOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140696812513528, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa7d9039425e6a14d8dd22e2a1ecf726, type: 2}
