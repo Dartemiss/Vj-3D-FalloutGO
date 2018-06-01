@@ -225,12 +225,12 @@ Prefab:
     - target: {fileID: 224705848621467600, guid: 00fda4c84a0f03a439f4ddc2f51a568c,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -596
+      value: -674
       objectReference: {fileID: 0}
     - target: {fileID: 224705848621467600, guid: 00fda4c84a0f03a439f4ddc2f51a568c,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -270
+      value: -260
       objectReference: {fileID: 0}
     - target: {fileID: 224705848621467600, guid: 00fda4c84a0f03a439f4ddc2f51a568c,
         type: 2}
@@ -382,6 +382,24 @@ Prefab:
         type: 2}
       propertyPath: m_Text
       value: Play!
+      objectReference: {fileID: 0}
+    - target: {fileID: 114904056994505580, guid: ec860b70d683f9c4eab2142298e70090,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Your objective in this level is to get to the end of the facility without
+        getting killed.
+
+
+        Beware the turrets, they will shoot you if you get too close, so don''t be
+        a moron!
+
+
+        Don''t fall through the brittle platforms, it''s quite the fall!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114904056994505580, guid: ec860b70d683f9c4eab2142298e70090,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 55
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec860b70d683f9c4eab2142298e70090, type: 2}
