@@ -27,8 +27,11 @@ public class GamplayScript : MonoBehaviour {
 	Animator m_Animator;
 	public Text ammoText;
 	public GameObject acquireBobblehead;
+    public GameObject acquireArtifact;
 	public Text bobbleRecountText;
-	int bobbleRecount = 0;
+    public Text artifRecountText;
+    int bobbleRecount = 0;
+    int artifRecount = 0;
 	bool availableAnimation = true;
 	public GameObject imageBobbNoAcq;
 	public GameObject imageBobbYesAcq;
@@ -36,6 +39,8 @@ public class GamplayScript : MonoBehaviour {
     public GameObject imageBobbYesAcq2;
     public GameObject imageBobbNoAcq3;
     public GameObject imageBobbYesAcq3;
+    public GameObject imageArtifNoAcq;
+    public GameObject imageArtifYesAcq;
     Transform vaultBoy;
 	bool first = true;
 
@@ -154,21 +159,38 @@ public class GamplayScript : MonoBehaviour {
 					audioBobble.Play();
 					StartCoroutine(bobbleDisappear(hit));
 					++bobbleRecount;
-					bobbleRecountText.text = bobbleRecount.ToString() + " Bobbleheads";
+
 					if (bobbleRecount == 1)
 					{
-						imageBobbNoAcq.SetActive(false);
+                        bobbleRecountText.text = bobbleRecount.ToString() + " Bobbleheads";
+                        imageBobbNoAcq.SetActive(false);
 						imageBobbYesAcq.SetActive(true);
 					}
                     if (bobbleRecount == 2)
                     {
+                        bobbleRecountText.text = bobbleRecount.ToString() + " Bobbleheads";
                         imageBobbNoAcq2.SetActive(false);
                         imageBobbYesAcq2.SetActive(true);
                     }
                     if (bobbleRecount == 3)
                     {
+                        bobbleRecountText.text = bobbleRecount.ToString() + " Bobbleheads";
                         imageBobbNoAcq3.SetActive(false);
                         imageBobbYesAcq3.SetActive(true);
+                    }
+                }
+                else if (hit.transform.tag == "artifact")
+                {
+                    acquireArtifact.SetActive(true);
+                    AudioSource audioArtif = hit.transform.gameObject.GetComponent<AudioSource>();
+                    audioArtif.Play();
+                    StartCoroutine(artifDisappear(hit));
+                    ++artifRecount;
+                    if (artifRecount == 1)
+                    {
+                        artifRecountText.text = artifRecount.ToString() + "/1 Artifact pieces";
+                        imageArtifNoAcq.SetActive(false);
+                        imageArtifYesAcq.SetActive(true);
                     }
                 }
 			}
@@ -381,7 +403,12 @@ public class GamplayScript : MonoBehaviour {
 		yield return new WaitForSeconds(1.0f);
 		Destroy(hit.transform.gameObject);
 	}
-    
+
+    public IEnumerator artifDisappear(RaycastHit hit)
+    {
+        yield return new WaitForSeconds(1.5f);
+        Destroy(hit.transform.gameObject);
+    }
 
     public IEnumerator ammoSound()
     {

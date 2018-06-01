@@ -16,6 +16,7 @@ TagManager:
   - collectible
   - button
   - THE_character
+  - artifact
   layers:
   - Default
   - TransparentFX
