@@ -13,6 +13,7 @@ public class RecuentoScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log (howmanyArtifact);
 		if (Input.GetMouseButtonDown (0)) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
@@ -23,9 +24,8 @@ public class RecuentoScript : MonoBehaviour {
 				}
 			}	
 		}
-		if (howmanyArtifact == 3 && !end) {
-			PlayerPrefs.SetInt ("nuke", howmanyArtifact);
-			end = true;
-		}
+
+		PlayerPrefs.SetInt ("nuke", howmanyArtifact);
+
 	}
 }

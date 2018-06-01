@@ -40,19 +40,23 @@ public class StaticEnemiesScript : MonoBehaviour {
 		float dotProd = Vector3.Dot (dirFromAtoB, enemy.forward);
 		if (dotProd > 0.9 && !dead) {
 			if(Vector3.Distance (mainCharacter.transform.position, enemy.position) <= 4.1f){
-				dead = true;
+				//dead = true;
 				if (enemy.transform.rotation.eulerAngles.y == 270) {
 					GameObject obj = Instantiate (shot, enemy.transform.position + new Vector3(0,1.5f,0) + Vector3.left, shot.transform.rotation);
 					obj.GetComponent<Rigidbody> ().velocity = speed * Vector3.left;
+					Destroy (obj, 3);
 				} else if(enemy.transform.rotation.eulerAngles.y == 0) {
 					GameObject obj = Instantiate (shot, enemy.transform.position + new Vector3(0,1.5f,0) + Vector3.forward, shot.transform.rotation);
 					obj.GetComponent<Rigidbody> ().velocity = speed * Vector3.forward;
+					Destroy (obj, 3);
 				} else if(enemy.transform.rotation.eulerAngles.y == 90) {
 					GameObject obj = Instantiate (shot, enemy.transform.position + new Vector3(0,1.5f,0) + Vector3.right, shot.transform.rotation);
 					obj.GetComponent<Rigidbody> ().velocity = speed * Vector3.right;
+					Destroy (obj, 3);
 				} else if(enemy.transform.rotation.eulerAngles.y == 180) {
 					GameObject obj = Instantiate (shot, enemy.transform.position + new Vector3(0,1.5f,0) + Vector3.back, shot.transform.rotation);
 					obj.GetComponent<Rigidbody> ().velocity = speed * Vector3.back;
+					Destroy (obj, 3);
 				}
 				//mainCharacter.gameObject.GetComponent<GamplayScript >().enabled = false;
 
