@@ -53,9 +53,9 @@ public class GamplayScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown("t")){
+		/*if(Input.GetKeyDown("t")){
 			transform.position = new Vector3 (tp.x, tp.y + 0.51f, tp.z);
-		}
+		}*/
 		if(Input.GetKeyDown("g")){
 			GODMODE = !GODMODE;
 			if (GODMODE)
