@@ -22173,6 +22173,11 @@ Prefab:
       propertyPath: imageArtifNoAcq
       value: 
       objectReference: {fileID: 1600783483}
+    - target: {fileID: 114138236498395048, guid: e9d5606e4c0c178439c2b8f0298ea76d,
+        type: 2}
+      propertyPath: losePanel
+      value: 
+      objectReference: {fileID: 1700412148}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9d5606e4c0c178439c2b8f0298ea76d, type: 2}
   m_IsPrefabParent: 0
@@ -36189,7 +36194,7 @@ Prefab:
     - target: {fileID: 224447107290587762, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
         type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 224076775872827708, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
         type: 2}
@@ -36204,7 +36209,7 @@ Prefab:
     - target: {fileID: 224626539232478976, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
         type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114016800238433646, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
         type: 2}
