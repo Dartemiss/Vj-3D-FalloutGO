@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Nivell 3.unity
     guid: 40f4508aae719794986f63444678f4fe
+  - enabled: 1
+    path: Assets/NUKENAY.unity
+    guid: e91c27baccc970a4baa89a8969981152
+  - enabled: 1
+    path: Assets/NukeYAS.unity
+    guid: d591a7ff61904964695249e41216ac4f
   m_configObjects: {}

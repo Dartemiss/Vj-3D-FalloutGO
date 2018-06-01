@@ -17,6 +17,12 @@ public class WinScript : MonoBehaviour {
 	void Update () {
 		if (Vector3.Distance (mainCharacter.position, transform.position) < 1.0f) {
             winPanel.SetActive(true);
+			int nuke = PlayerPrefs.GetInt ("nuke");
+			if (nuke == 3) {
+				SceneManager.LoadScene (8);
+			}
+			else
+				SceneManager.LoadScene (7);
 			//SceneManager.LoadScene(nextLvl);
 		}
 	}

@@ -43,7 +43,6 @@ public class GamplayScript : MonoBehaviour {
     public GameObject imageArtifYesAcq;
     Transform vaultBoy;
 	bool first = true;
-
 	bool GODMODE = false;
 
 	// Use this for initialization

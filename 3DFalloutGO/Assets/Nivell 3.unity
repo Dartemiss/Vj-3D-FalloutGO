@@ -8568,6 +8568,11 @@ Prefab:
       propertyPath: imageArtifYesAcq
       value: 
       objectReference: {fileID: 531734003}
+    - target: {fileID: 114153339872499122, guid: e9d5606e4c0c178439c2b8f0298ea76d,
+        type: 2}
+      propertyPath: recuentoArt
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9d5606e4c0c178439c2b8f0298ea76d, type: 2}
   m_IsPrefabParent: 0
@@ -27313,22 +27318,22 @@ Prefab:
     - target: {fileID: 224447107290587762, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
         type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 224626539232478976, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
         type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 224016490040190578, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
         type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224076775872827708, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
         type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 114140696812513528, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
         type: 2}

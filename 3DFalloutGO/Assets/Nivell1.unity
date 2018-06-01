@@ -31933,6 +31933,11 @@ Prefab:
       propertyPath: imageArtifYesAcq
       value: 
       objectReference: {fileID: 603691984}
+    - target: {fileID: 114153339872499122, guid: e9d5606e4c0c178439c2b8f0298ea76d,
+        type: 2}
+      propertyPath: recuentoArt
+      value: 
+      objectReference: {fileID: 1486171509}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9d5606e4c0c178439c2b8f0298ea76d, type: 2}
   m_IsPrefabParent: 0
@@ -32875,6 +32880,47 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1484813233}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1486171509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1486171511}
+  - component: {fileID: 1486171510}
+  m_Layer: 0
+  m_Name: Recuento
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1486171510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1486171509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eedb07e20f9d5234ebcecedd1cad5188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  howmanyArtifact: 0
+--- !u!4 &1486171511
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1486171509}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 96.3, y: 9.725, z: 97.565}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 41
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1487734043
 GameObject:
   m_ObjectHideFlags: 0
@@ -43752,17 +43798,17 @@ Prefab:
     - target: {fileID: 224447107290587762, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
         type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 224626539232478976, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
         type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 224076775872827708, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
         type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224016490040190578, guid: aa7d9039425e6a14d8dd22e2a1ecf726,
         type: 2}
